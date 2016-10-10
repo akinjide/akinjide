@@ -1,3 +1,4 @@
 .idea
 .DS_Store
 akinjide-pubkey.asc
+node_modules/
