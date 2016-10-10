@@ -1,0 +1,30 @@
+/* 
+ * Main styling.
+ */
+	#container {
+		opacity: 1 !important;
+		right: 0 !important;
+    display: none;
+	}
+
+	body {
+		background-color: #101010;
+	}
+
+	body:before {
+		content: 'Javascript is disabled :(';
+		display: block;
+		position: absolute;
+		top: 50%;
+		z-index: 3001;
+		width: calc(100% - 22.5em * 0.333333333);
+		height: 4em;
+		margin-top: -2em;
+		color: #272727;
+		cursor: default;
+		font-size: 3em;
+		line-height: 4em;
+		text-align: center;
+		white-space: nowrap;
+		left: 0;
+	}
