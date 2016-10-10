@@ -1,0 +1,17 @@
+{
+  "name": "resume.akinjide-www",
+  "version": "1.0.0",
+  "description": "",
+  "main": "minifer.js",
+  "dependencies": {
+    "minifier": "^0.8.0",
+    "progress": "^1.1.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "make develop"
+  },
+  "author": "Akinjide Bankole <r@akinjide.me>",
+  "license": "ISC"
+}
