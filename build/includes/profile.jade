@@ -1,0 +1,26 @@
+#profile
+  .about
+    .photo-inner
+      ul
+        li: img(src="images/akinjide-avatar.png" alt="photo" height="186" width="153")
+    h1 AKINJIDE BANKOLE
+    h3 NODE JS / PYTHON HACKER
+    p I like to hack code and build fun stuffs. APIs, open source contribution, demo apps, whatever. If it's fun, I'll dive in.
+  
+  - var values = ['Name', 'Birthday', 'Address', 'Email', 'Phone', 'Website'];
+  - var details = ['Akinjide Bankole', 'July 21, 1995', 'Funsho Street, LG', 'r@akinjide.me', '+234-802-924-5639', 'www.akinjide.me'];
+  
+  ul.personal-info
+    each value, index in values
+      li
+        if values[values.indexOf('Email')] === value
+          label= value
+          span.word-wrap
+            a(href="mailto:r@akinjide.me") #{details[index]}
+        else if  values[values.indexOf('Website')] === value
+          label= value
+          span.word-wrap
+            a(href="https://www.akinjide.me") #{details[index]}
+        else
+          label= value
+          span #{details[index]}

@@ -1,0 +1,20 @@
+section#portfolio
+
+  - var tags = ["All", "Webdesign", "Photoghraphy", "Illustration", "Print", "Animation"];
+
+  ul.cat-filter#portfolio-filter
+    each tag in tags
+      if tags[tag.indexOf('All')] === tag
+        li
+          a.transition.current&attributes({ href: '', 'data-filter': '*' })= tag
+      else
+        li
+          a.transition&attributes({ href: '', 'data-filter': '.' + tag.toLowerCase() })= tag
+
+  .extra-text Some of the projects I'm proud of
+  ul#portfolio-list
+    li.print&attributes({ class: tags[1].toLowerCase() })
+      a(href="portfolio/6.jpg", rel="portfolio").folio
+        img(src="portfolio/6-thumb.jpg" alt="")
+        h2.title Akinjide www
+        span.categorie !{tags[1]} / !{tags[4]}

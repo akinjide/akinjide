@@ -1,0 +1,40 @@
+section#contact
+  #map
+  .contact-info
+    h3.main-heading
+      span Contact Info
+    ul
+      li Yaba, Lagos
+        br
+        br
+      li Email: r@akinjide.me
+      li Phone: +234-802-924-5639
+      li Website: www.akinjide.me
+    h3.main-heading
+    ul(style={'margin-bottom': '30px'})
+      li Key fingerprint:
+      br
+      li.snippet
+        strong#copy-key BB99 7052 37A0 284F D945  CEDB E418 77A3 EA43 D3E1
+        button(data-clipboard-demo data-clipboard-target="#copy-key")
+          img.clippy(width="13" src="images/clippy.svg" alt="Copy to clipboard")
+    a.button.transition(title="Akinjide PGP Public Key" href="/akinjide-pubkey.asc" download="akinjide-pubkey") Download PGP Key
+  .contact-form
+    h3.main-heading
+      span Let's keep in touch
+    #contact-status
+    form#contactform(method="POST" action="")
+      p
+        label(for="name") Your Name*
+        input#name.input(type="text" name="name" minlength="2" required)
+      p
+        label(for="email") Your Email*
+        input#email.input(type="email" name="email" required)
+      p
+        label(for="message") Your Message*
+        textarea#message.textarea(name="message" cols="88" rows="6" required)
+      p
+        label(for="remember")
+          input#remember(type="checkbox" value="Remember me for 30 days?")
+          i
+      input.button.transition(type="submit" name="submit" value="Send your message")

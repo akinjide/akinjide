@@ -1,0 +1,13 @@
+header
+  #logo
+    h2 AKINJIDE BANKOLE
+    h4 NODE JS / PYTHON HACKER
+
+  - var socialUrls = ['http://bit.ly/1YYkZzO', 'http://bit.ly/1NkuOr8', 'https://www.akinjide.me'];
+  - var icons = ['&#x2a;', '&#x2c;', '&#x31;'];
+
+  ul.socialicons
+    li.socials-text Social Profiles
+    each url, index in socialUrls
+      li
+        a.transition&attributes({ href: url })!= icons[index]

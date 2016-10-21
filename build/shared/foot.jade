@@ -1,0 +1,20 @@
+script(type="text/javascript").
+  //- Legal Notice Confirmation.
+
+  //- Needed Variables
+  var $legalNotice = $('#legal-notice');
+
+  if (Cookies.get("AcceptCookie") == 'Y') {
+    $legalNotice.css({ display: none });
+  }
+
+  function close_cookie() {
+    $legalNotice.addClass("hidden");
+  }
+
+  function cookie_accept() {
+    Cookies.defaults = { expires: 365, path: '', secure: true, domain: 'resume.akinjide.me' };
+    Cookies.set('AcceptCookie', 'Y');
+    $legalNotice.addClass("hidden");
+    $("label[for='remember']").addClass('active is-selected').show();
+  }
