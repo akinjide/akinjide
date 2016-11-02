@@ -2,23 +2,23 @@ var minifier = require('minifier'),
     ProgressBar = require('progress'),
     path = require('path'),
     jsIndex = [
-      'scripts/jquery.easytabs.min.js',
-      'scripts/respond.min.js',
-      'scripts/jquery.prettyPhoto.js',
-      'scripts/jquery.isotope.min.js',
-      'scripts/jquery-ui-map.js',
-      'scripts/jquery.carouFredSel.js',
-      'scripts/plugins.js',
-      'scripts/jquery.validate.min.js',
-      'scripts/js.cookie-2.1.2.min.js',
-      'scripts/clipboard.min.js',
-      'scripts/html2canvas.min.js',
-      'scripts/vfs_fonts.js',
-      'scripts/pdfmake.min.js',
+      'scripts/lib/jquery.easytabs.min.js',
+      'scripts/lib/respond.min.js',
+      'scripts/lib/jquery.prettyPhoto.js',
+      'scripts/lib/jquery.isotope.min.js',
+      'scripts/lib/jquery-ui-map.js',
+      'scripts/lib/jquery.carouFredSel.js',
+      'scripts/lib/plugins.js',
+      'scripts/lib/jquery.validate.min.js',
+      'scripts/lib/js.cookie-2.1.2.min.js',
+      'scripts/lib/clipboard.min.js',
+      'scripts/lib/html2canvas.min.js',
+      'scripts/lib/vfs_fonts.js',
+      'scripts/lib/pdfmake.min.js',
       'scripts/script.js'
     ],
     jsError = [
-      'scripts/typed.min.js',
+      'scripts/lib/typed.min.js',
       'scripts/404.js'
     ],
     cssIndex = [
@@ -30,7 +30,8 @@ var minifier = require('minifier'),
       'styles/404.css'
     ],
     len = jsIndex.length + cssIndex.length + cssError.length + jsError.length,
-    bar, timer;
+    bar, timer,
+    destination = 'build/';
 
 minifier.on('error', function(e) {
   console.log('>>> minifier error', e)
@@ -52,10 +53,10 @@ timer = setInterval(function () {
   }
 }, 100);
 
-// Build js
-minifier.minify(jsIndex, { output: 'dist/_6ltyr.min.js', noComments: true});
-minifier.minify(jsError, { output: 'dist/_6kgkb.min.js', noComments: true});
+// Build .min.js
+minifier.minify(jsIndex, { output: destination + '_6ltyr.min.js', noComments: true });
+minifier.minify(jsError, { output: destination + '_6kgkb.min.js', noComments: true });
 
-// Build css
-minifier.minify(cssIndex, { output: 'dist/_oc2y0.min.css', noComments: true});
-minifier.minify(cssError, { output: 'dist/_tn2fu.min.css', noComments: true});
+// Build .min.css
+minifier.minify(cssIndex, { output: destination + '_oc2y0.min.css', noComments: true });
+minifier.minify(cssError, { output: destination + '_tn2fu.min.css', noComments: true });
