@@ -3,6 +3,6 @@
 akinjide-pubkey.asc
 node_modules/
 scripts/scripts.coffee
-dist/
+build/
 npm-debug.log
 test.html
