@@ -1,44 +1,27 @@
-section#books
-  - var tags = ["All", "WebDesign", "Photoghraphy", "Illustration", "Print", "Animation"];
+section#book
+  - var tags = ["All", "Programming", "Design", "Engineering", "Architecture"];
+  - var languages = ["Node.js", "Python", "CSS"];
+  - var books = ["Mean Machine", "Learn Python the Hard Way"];
 
   ul.cats-filter#books-filter
     each tag in tags
-      if tags[tag.indexOf('All')]] === tag
+      if tags[tag.indexOf('All')] === tag
         li
           a.transition.current&attributes({ href: '', 'data-filter': '*' })= tag
       else
         li
           a.transition&attributes({ href: '', 'data-filter': '.' + tag.toLowerCase() })= tag
 
-  .extra-text Some of the projects I'm proud of
-  ul#books-list
-    li&attributes({ class: list[1] })
-      a
-        img
-        h2
-        span.categorie list[1] / list[4]
+  .extra-text Books I've read and recommend
+  ul#book-list
+    li&attributes({ class: tags[1].toLowerCase() })
+      a(href="#", rel="book").folio
+        img(src="book/mean-machine.png" alt="#{books[0]} Book")
+        h2.title !{books[0]}
+        span.categorie !{languages[0]} / !{tags[1]}
 
-
-
-        <section id="portfolio">
-          <ul class="cats-filter" id="portfolio-filter">
-            <li><a href="" class="current transition" data-filter="*">All</a></li>
-            <li><a href="" class="transition" data-filter=".webdesign">WebDesign</a></li>
-<!--
-            <li><a href="" class="transition" data-filter=".photoghraphy">Photoghraphy</a></li>
-            <li><a href="" class="transition" data-filter=".illustration">Illustration</a></li>
- -->
-            <li><a href="" class="transition" data-filter=".print">Print</a></li>
-<!--             <li><a href="" class="transition" data-filter=".animation">Animation</a></li> -->
-          </ul>
-          <div class="extra-text">Some of the projects I'm proud of</div>
-          <ul id="portfolio-list">
-            <li class="webdesign print">
-              <a href="portfolio/6.jpg" rel="portfolio" class="folio">
-                <img src="portfolio/6-thumb.jpg" alt=""/>
-                <h2 class="title">Akinjide www</h2>
-                <span class="categorie">Webdesign / Print</span>
-              </a>
-            </li>
-          </ul>
-        </section>
+    li&attributes({ class: tags[1].toLowerCase() })
+      a(href="#", rel="book").folio
+        img(src="book/expressjs-middleware.png" alt="#{books[1]} Book")
+        h2.title !{books[1]}
+        span.categorie !{languages[1]} / !{tags[1]}

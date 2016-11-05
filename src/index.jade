@@ -1,7 +1,7 @@
 extends base
 
 block append scripts
-  script(type="text/javascript" src="dist/_6ltyr.min.js")
+  script(type="text/javascript" src="build/_6ltyr.min.js")
   script(type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyBm7BjffwF38_EX_1mrNgwSPLd6aA5TKeY")
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,12 +12,14 @@ block append scripts
 block content
   section#container
     include ./includes/banner.jade
+    //- include ./includes/preloader.jade
     include ./includes/about.jade
     section#content
       include ./includes/profile.jade
       include ./includes/nav.jade
       include ./includes/resume.jade
       include ./includes/portfolio.jade
+      include ./includes/books.jade
       include ./includes/contact.jade
     include ./includes/legal.jade
     include ./shared/footer.jade
