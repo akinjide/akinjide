@@ -1,27 +1,26 @@
+block vars
 doctype html
-html(dir="ltr" lang="en-US" xmlns="http://www.w3.org/1999/xhtml")
+include ./includes/signature.txt
+html(dir="ltr" lang="en-US" xmlns="http://www.w3.org/1999/xhtml" id=attributes)
   head
     include ./shared/header.jade
     block title
       title Akinjide Bankoles' Resume
     block head
       include ./shared/head.jade
-      
+
     block styles
-      //- link(rel="stylesheet" type="text/css" href="styles/reset.css")
-      link(rel="stylesheet" type="text/css" href="build/_oc2y0.min.css")
-      link(rel="stylesheet" type="text/css" href="styles/style.css")
-      //- link(rel="stylesheet" type="text/css" href="styles/prettyPhoto.css")
       link(rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300,800,700,400italic")
+      link(rel="stylesheet" type="text/css" href="build/_oc2y0.min.css")
+      //- link(rel="stylesheet" type="text/css" href="styles/style.css")
       <!--[if IEMobile]>
       <link rel="stylesheet" type="text/css" href="css/iemobile.css"/>
       <![endif]-->
 
-
     block scripts
       script(type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js")
-      <script>window.jQuery || document.write('<script type="text/javascript" src="scripts/jquery.min.js"><\/script>')</script>
-      //- script(type="text/javascript") window.jQuery || document.write('<script type="text/javascript" src="scripts/jquery.min.js"></script>')
+      script(type="text/javascript").
+        window.jQuery || document.write('<script type="text/javascript" src="scripts/lib/jquery.min.js"><\/script>')
 
   body
     block content
