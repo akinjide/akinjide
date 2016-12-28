@@ -2,7 +2,5 @@
 .DS_Store
 akinjide-pubkey.asc
 node_modules/
-scripts/scripts.coffee
 build/
 npm-debug.log
-test.html
