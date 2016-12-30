@@ -360,6 +360,48 @@ jQuery(document).ready(function() {
       'animSpeed': 100
     });
 
+  /*
+   * Book.
+   */
+
+    // Needed variables.
+    var $blist = $('#book-list');
+    var $bfilter = $('#book-filter');
+
+    // Run isotope.
+    $blist.isotope({
+      filter: '*',
+      layoutMode: 'masonry',
+      animationOptions: {
+        duration: 750,
+        easing: 'linear'
+      }
+    });
+
+    // Isotope filter.
+    $bfilter.find('a').click(function() {
+      var selector = $(this).attr('data-filter');
+
+      $blist.isotope({
+        filter: selector,
+        animationOptions: {
+          duration: 750,
+          easing: 'linear',
+          queue: false
+        }
+      });
+      return false;
+    });
+
+    // Portfolio image animation
+    $blist.find('img').adipoli({
+      'startEffect': 'transparent',
+      'hoverEffect': 'boxRandom',
+      'imageOpacity': 0.6,
+      'animSpeed': 100
+    });
+
+
 
   /*
    * prettyPhoto.
@@ -384,7 +426,9 @@ jQuery(document).ready(function() {
         $notify = $("#notify"),
         $legalNotice = $('#legal-notice'),
         $cookieEnabled,
-        $url = 'http://tinweb.com.ng/tinweb.com.ng/akinjide/contact.php';
+        // $url = 'http://tinweb.com.ng/tinweb.com.ng/akinjide/contact.php';
+        $url = 'https://formspree.io/r@akinjide.me';
+        // $url = 'http://ec2-54-210-32-8.compute-1.amazonaws.com/contact.php';
 
     // Check for cookieState
     $cookieEnabled = (navigator.cookieEnabled) ? true : false;
@@ -404,13 +448,13 @@ jQuery(document).ready(function() {
         $legalNotice.addClass("hidden");
 
         // Remember Name and Email.
-        $remember.on("click", function(e) {
+        // $remember.on("click", function(e) {
+        $remember.on("change", function(e) {
           var $target = $(e.target);
 
           if ($target.is(":checked")) {
             $name = $contactform.find("#name").val();
             $email = $contactform.find("#email").val();
-
 
             Cookies.defaults = { expires: 30, path: '', secure: true, domain: 'resume.akinjide.me' };
             Cookies.set('_USN', $name);
@@ -480,7 +524,7 @@ jQuery(document).ready(function() {
             data: $(this).serialize(),
             dataType: "json",
             xhrFields: {
-                withCredentials: true
+              withCredentials: true
             }
           })
           .done(function(msg) {
@@ -522,61 +566,48 @@ jQuery(document).ready(function() {
             'bounds': true
           }).click(function() {
             $map.gmap('openInfoWindow', {
-              'content': 'I am here!<br><br>Latitude: ' + $lat + '<br>Longitude: ' + $long + '<br>'
+              'content': 'I am here!<br><br><strong>Latitude:</strong> ' + $lat + '<br><strong>Longitude:</strong> ' + $long + '<br>'
             }, this);
           });
 
           $map.gmap('option', 'styles', [{
             "stylers": [{
-                  "hue": "#FFFFFF"
+                "hue": "#FFFFFF"
               }, {
-                  saturation: -100
+                saturation: -100
               }, {
-                  gamma: 2
-            }]
+                gamma: 2
+              }
+            ]
           }]);
           $map.gmap('option', 'disableDefaultUI', true);
-          $map.gmap('option', 'zoom', 16);
+          $map.gmap('option', 'zoom', 10);
         });
 
-//     $map.gmap().bind('init', function(ev, map) {
-//       placeMarker($lat, $long, 'I am here!', 'images/gmap_pin.png', false);
-//
-//       function placeMarker(latitude, longtitude, content, icon, animation) {
-//         if (arguments && arguments.length === 5) {
-//           if (animation) gmap_options.animation = google.maps.Animation.BOUNCE;
-//
-//           gmap_options = {
-//             'position': latitude + ',' + longtitude,
-//             'icon': icon,
-//             'bounds': true
-//           };
-//         }
-//
-//         $map.gmap('addMarker', gmap_options).click(function() {
-//           $map.gmap('openInfoWindow', {
-//             'content': content
-//           }, this);
-//         });
-//
-//         var latLng = new google.maps.LatLng(latitude, longtitude);
-//         $map.gmap('option', 'center', latLng);
-//         $map.gmap('option', 'disableDefaultUI', true);
-//         $map.gmap('option', 'zoom', 10);
-//       }
+        // $map.gmap().bind('init', function(ev, map) {
+        //   // Detect user location
+        //   if (navigator.geolocation) {
+        //     navigator.geolocation.getCurrentPosition(function(position) {
+        //       var longtitude =  parseFloat(position.coords.longitude);
 
-      // Detect user location
-//       if (navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(function(position) {
-//           var longtitude =  parseFloat(position.coords.longitude);
-//
-//           placeMarker(position.coords.latitude, longtitude, 'You are here!', '', true);
-//         }, function() {
-//           console.log('Couldn\'t find you :(');
-//         });
-//       }
+        //       $map.gmap('addMarker', {
+        //           'position': position.coords.latitude + ',' + longtitude,
+        //           'icon': 'images/pin.png',
+        //           'bounds': true,
+        //           'animation': google.maps.Animation.BOUNCE
+        //         }).click(function() {
+        //           $map.gmap('openInfoWindow', {
+        //             'content': 'You\'re here!<br><br><strong>Latitude:</strong> ' + position.coords.latitude + '<br><strong>Longitude:</strong> ' + longtitude + '<br>'
+        //           }, this);
+        //       });
 
-//     });
+        //       var latLng = new google.maps.LatLng(position.coords.latitude, longtitude);
+        //       $map.gmap('option', 'center', latLng);
+        //     }, function() {
+        //       console.log('Couldn\'t find you :(');
+        //     });
+        //   }
+        // });
 
     // Refresh map.
     $content.bind('easytabs:after', function(evt, tab, panel) {
