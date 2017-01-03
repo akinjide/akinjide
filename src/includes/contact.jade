@@ -25,6 +25,9 @@ section#contact
     #contact-status
     form#contactform(method="POST" action="")
       p
+        input(type="hidden" name="_subject" value="Hey Akinjide!")
+        input(type="text" name="_gotcha" style="display:none")
+      p
         label(for="name") Your Name*
         input#name.input(type="text" name="name" minlength="2" required)
       p

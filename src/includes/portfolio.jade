@@ -17,4 +17,10 @@ section#portfolio
       a(href="portfolio/6.jpg", rel="portfolio").folio
         img(src="portfolio/6-thumb.jpg" alt="")
         h2.title Akinjide www
+        span.categorie !{tags[1]}
+
+    li.animation&attributes({ class: tags[1].toLowerCase() })
+      a(href="portfolio/2.png", rel="portfolio").folio
+        img(src="portfolio/2-thumb.png" alt="")
+        h2.title Medlenna
         span.categorie !{tags[1]} / !{tags[4]}

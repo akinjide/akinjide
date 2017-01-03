@@ -1,9 +1,9 @@
 section#book
   - var tags = ["All", "Programming", "Design", "Engineering", "Architecture"];
   - var languages = ["Node.js", "Python", "CSS"];
-  - var books = ["Mean Machine", "Learn Python the Hard Way"];
+  - var books = ["Mean Machine", "Learn Python the Hard Way", "Building Scalable Apps with Redis and Node.js"];
 
-  ul.cats-filter#books-filter
+  ul.cats-filter#book-filter
     each tag in tags
       if tags[tag.indexOf('All')] === tag
         li
@@ -22,6 +22,6 @@ section#book
 
     li&attributes({ class: tags[1].toLowerCase() })
       a(href="#", rel="book").folio
-        img(src="book/expressjs-middleware.png" alt="#{books[1]} Book")
+        img(src="book/learn-python-hard-way.png" alt="#{books[1]} Book")
         h2.title !{books[1]}
         span.categorie !{languages[1]} / !{tags[1]}

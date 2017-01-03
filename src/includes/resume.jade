@@ -87,10 +87,10 @@ section#resume
         span.tooltip_content
           span
             strong Current XP:
-            | 18120
+            |  20000
             br
             strong Target XP:
-            | 27000 before December 1
+            |  27000 before FEB 1
             br
             br
             strong How I calculate my XP Points.
@@ -98,9 +98,8 @@ section#resume
             | 1 dot represent 3000XP, everyday I try new stuffs, and I reward
             |  myself 1XP after successfully learned.
     ul.skills
-      each skill in [6, 0, 0, 0, 0, 0]
+      each skill in [7, 0, 0, 0, 0, 0]
         li
           .rating&attributes({ 'data-rat': skill })
   div.clear
-  //- a(href="javascript:window.print()" class="button transition")Download resume as PDF format
-  a#downloadPDF.button.transition Download resume as PDF format
+  a#downloadPDF.button.transition(title="Akinjide Resume" href="http://akinjide-proxy.herokuapp.com/resume" download="akinjide-resume") Download resume as PDF format
