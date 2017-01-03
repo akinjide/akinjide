@@ -980,13 +980,13 @@ header {
 
 #book-list li {
   float: left;
-  margin-right: 25px;
+  margin-right: 30px;
   text-align: center;
   background: #FBFBFB;
   border-bottom: 1px solid #E5E5E5;
   height: 185px;
   margin-bottom: 30px;
-  width: 138px;
+  width: 130px;
   transition: all .5s ease;
   -webkit-box-shadow: 0px 1px 3px 0px rgba(50, 50, 50, 0.10);
 }
@@ -1000,7 +1000,7 @@ header {
 #book-list img {
   background: #FFF;
   height: 120px;
-  width: 138px;
+  width: 130px;
   -webkit-transition: all .1s ease-in-out;
      -moz-transition: all .1s ease-in-out;
 }
@@ -1928,7 +1928,7 @@ a.legal-notice-close:hover {
   }
 
   #book-list li {
-    margin-right: 40px;
+    margin-right: 10px;
   }
 
   /*
@@ -2148,7 +2148,7 @@ a.legal-notice-close:hover {
   }
 
   #book-list li {
-  margin-left: 40px;
+    margin-left: 20px;
   }
 
   /*
