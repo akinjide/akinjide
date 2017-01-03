@@ -20,12 +20,12 @@ jQuery(window).load(function() {
   var $errorBanner = $('#error-banner'),
       $errorHide = $('#error-hide'),
       $errorRefresh = $('#error-refresh'),
-      $condition;
+      condition;
 
   function updateOnlineStatus(event) {
-    $condition = navigator.onLine ? "online" : "offline";
+    condition = navigator.onLine ? "online" : "offline";
 
-    if ($condition == "online" && event.type == "online")
+    if (condition == "online" && event.type == "online")
       $errorBanner.hide();
     else
       $errorBanner.fadeIn(200);
@@ -52,31 +52,33 @@ jQuery(document).ready(function() {
   * Clipboard functions.
   */
   var $fingerprintdownload = $('#copy-key');
-  var btns = document.querySelectorAll('button[data-clipboard-demo]');
+  var $btns = document.querySelectorAll('button[data-clipboard-demo]');
 
-  for (var i = 0; i < btns.length; i++) {
-      btns[i].addEventListener('mouseleave', function(e) {
-          e.currentTarget.setAttribute('class', 'btn');
-          e.currentTarget.removeAttribute('aria-label');
-      });
+  for (var i = 0; i < $btns.length; i++) {
+    $btns[i].addEventListener('mouseleave', function(e) {
+      e.currentTarget.setAttribute('class', 'btn');
+      e.currentTarget.removeAttribute('aria-label');
+    });
   }
 
   function showTooltip(elem, msg) {
-      elem.setAttribute('class', 'btn tooltipped tooltipped-w');
-      elem.setAttribute('aria-label', msg);
+    elem.setAttribute('class', 'btn tooltipped tooltipped-e');
+    elem.setAttribute('aria-label', msg);
   }
 
   function fallbackMessage(action) {
-      var actionMsg = '';
-      var actionKey = (action === 'cut' ? 'X' : 'C');
-      if (/iPhone|iPad/i.test(navigator.userAgent)) {
-          actionMsg = 'No support :(';
-      } else if (/Mac/i.test(navigator.userAgent)) {
-          actionMsg = 'Press ⌘-' + actionKey + ' to ' + action;
-      } else {
-          actionMsg = 'Press Ctrl-' + actionKey + ' to ' + action;
-      }
-      return actionMsg;
+    var actionMsg = '';
+    var actionKey = (action === 'cut' ? 'X' : 'C');
+
+    if (/iPhone|iPad/i.test(navigator.userAgent)) {
+      actionMsg = 'No support :(';
+    } else if (/Mac/i.test(navigator.userAgent)) {
+      actionMsg = 'Press ⌘-' + actionKey + ' to ' + action;
+    } else {
+      actionMsg = 'Press Ctrl-' + actionKey + ' to ' + action;
+    }
+
+    return actionMsg;
   }
 
   var clipboard = new Clipboard('[data-clipboard-demo]');
@@ -95,35 +97,6 @@ jQuery(document).ready(function() {
     console.error('Action:', e.action);
     console.error('Trigger:', e.trigger);
     showTooltip(e.trigger, fallbackMessage(e.action));
-  });
-
-
- /*
-  * PDF functions.
-  */
-  $('#downloadPDF').click(function() {
-    html2canvas($('#container'), {
-      onrendered: function(canvas) {
-        var data = canvas.toDataURL("image/jpeg", 1.0);
-        console.log(data, 'data');
-        console.log(canvas, 'canvas');
-        var docDefinition = {
-          // background: 'simple text',
-          pageSize: 'A4',
-          // pageMargins: [ 50, 2, 50, 0],
-          content: [{
-            image: data,
-            width: 500
-          }]
-        };
-        // console.log(docDefinition, 'doc Defintion')
-        pdfMake.createPdf(docDefinition).download('details.pdf');
-      },
-      background: '#FFFFFF',
-      logging: true,
-      taintTest: true,
-      letterRendering: true
-    });
   });
 
 
@@ -146,7 +119,7 @@ jQuery(document).ready(function() {
   });
 
   // Funny Alerts
-  var $messages = [
+  var messages = [
     "Dude, you wanna piece of that?",
     "Mommy is that you??",
     "You think that you can inject HTML?",
@@ -187,7 +160,7 @@ jQuery(document).ready(function() {
   ];
 
   function showMessage() {
-    return $messages[Math.floor(Math.random() * $messages.length)];
+    return messages[Math.floor(Math.random() * messages.length)];
   };
 
 
@@ -199,14 +172,14 @@ jQuery(document).ready(function() {
   $('.skills li .rating').each(function(index, e) {
 
     // Variables
-    var $ratNum = 7,
+    var ratNum = 7,
         $rat = $(e).attr('data-rat'),
-        $point = '<span></span';
+        point = '<span></span';
 
     // Append points.
-    while ($ratNum > 0) {
-      $(e).append($point);
-      $ratNum--;
+    while (ratNum > 0) {
+      $(e).append(point);
+      ratNum--;
     }
 
     $(e).find('span').each(function(index, e) {
@@ -421,27 +394,26 @@ jQuery(document).ready(function() {
 
     // Needed variables.
     var $contactform = $('#contactform'),
-        $success = 'Your message has been sent. Thank you!',
+        success = 'Your message has been sent. Thank you!',
         $remember = $("#remember"),
         $notify = $("#notify"),
         $legalNotice = $('#legal-notice'),
-        $cookieEnabled,
-        // $url = 'http://tinweb.com.ng/tinweb.com.ng/akinjide/contact.php';
-        $url = 'https://formspree.io/r@akinjide.me';
-        // $url = 'http://ec2-54-210-32-8.compute-1.amazonaws.com/contact.php';
+        cookieEnabled,
+        // url = 'http://tinweb.com.ng/tinweb.com.ng/akinjide/contact.php';
+        url = 'https://formspree.io/r@akinjide.me';
 
     // Check for cookieState
-    $cookieEnabled = (navigator.cookieEnabled) ? true : false;
+    cookieEnabled = (navigator.cookieEnabled) ? true : false;
 
     // if not IE4+ nor NS6+
-    if (typeof navigator.cookieEnabled == "undefined" && !$cookieEnabled){
+    if (typeof navigator.cookieEnabled == "undefined" && !cookieEnabled){
         document.cookie = "testcookie";
         cookieEnabled = (document.cookie.indexOf("testcookie") != -1) ? true : false
         $legalNotice.addClass("hidden");
     }
 
     // if cookies are enabled on client's browser
-    if (typeof navigator.cookieEnabled != "undefined" && $cookieEnabled) {
+    if (typeof navigator.cookieEnabled != "undefined" && cookieEnabled) {
       Cookies.set('_TS', Date.now(), { expires: 30, path: '', secure: true, domain: 'resume.akinjide.me' });
 
       if (Cookies.get("AcceptCookie") == 'Y') {
@@ -510,42 +482,51 @@ jQuery(document).ready(function() {
       }
     });
 
-    $contactform.change(function() {
+    $contactform.keyup(function() {
       if (validator.numberOfInvalids() > 0) {
         $contactform.find("input[type='submit']").attr('disabled', true).addClass('disabled');
       }
       else {
         $contactform.find("input[type='submit']").removeAttr('disabled').removeClass('disabled');
-
-        $contactform.submit(function(e) {
-          $.ajax({
-            type: 'POST',
-            url: $url,
-            data: $(this).serialize(),
-            dataType: "json",
-            xhrFields: {
-              withCredentials: true
-            }
-          })
-          .done(function(msg) {
-            console.log(msg)
-            if (msg.success == true) {
-              response = '<div class="success">' + $success + '</div>';
-              $contactform.find("textarea").val("");
-            }
-            else {
-              response = '<div class="error">' + msg.errors.message + '</div>';
-            }
-
-            // Hide any previous response text.
-            $('.error, .success').remove();
-
-            // Show response message.
-            $contactform.prepend(response);
-          })
-          e.preventDefault();
-        });
       }
+    });
+
+    $contactform.submit(function(e) {
+      $.ajax({
+        type: 'POST',
+        url: url,
+        data: $(this).serialize(),
+        dataType: "json",
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        async: true,
+        crossDomain: true,
+        cache: false,
+        beforeSend: function(xhr) {
+          xhr.withCredentials = true;
+        }
+      })
+      .done(function(msg) {
+        if (msg.success) {
+          response = '<div class="success">' + success + '</div>';
+          $contactform.find("textarea").val("");
+          $contactform.addClass('has-error');
+        }
+        else {
+          response = '<div class="error">' + msg.errors.message + '</div>';
+        }
+
+        // Hide any previous response text.
+        $('.error, .success').remove();
+
+        // Show response message.
+        $contactform.prepend(response);
+      })
+      .fail(function(msg) {
+        $('.error, .success').remove();
+        $contactform.prepend('<div class="error">Oh no! Something Broke. Try Again.</div>');
+      });
+
+      return false;
     });
 
 
@@ -556,17 +537,17 @@ jQuery(document).ready(function() {
     // Needed variables.
     var $map = $('#map'),
         $tabContactClass = ('tab-contact'),
-        $lat = '6.507093',
-        $long = '3.383739';
+        lat = '6.507093',
+        long = '3.383739';
 
         $map.gmap().bind('init', function(ev, map) {
           $map.gmap('addMarker', {
-            'position': $lat + ',' + $long,
+            'position': lat + ',' + long,
             'icon': 'images/pin.png',
             'bounds': true
           }).click(function() {
             $map.gmap('openInfoWindow', {
-              'content': 'I am here!<br><br><strong>Latitude:</strong> ' + $lat + '<br><strong>Longitude:</strong> ' + $long + '<br>'
+              'content': 'I am here!<br><br><strong>Latitude:</strong> ' + lat + '<br><strong>Longitude:</strong> ' + long + '<br>'
             }, this);
           });
 
@@ -581,7 +562,7 @@ jQuery(document).ready(function() {
             ]
           }]);
           $map.gmap('option', 'disableDefaultUI', true);
-          $map.gmap('option', 'zoom', 10);
+          $map.gmap('option', 'zoom', 16);
         });
 
         // $map.gmap().bind('init', function(ev, map) {
