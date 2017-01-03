@@ -31,10 +31,11 @@ var minifier = require('minifier'),
     ],
     len = jsIndex.length + cssIndex.length + cssError.length + jsError.length,
     bar, timer,
-    destination = 'build/';
+    destination = 'build/',
+    environment = process.argv[2] || 'development';
 
 minifier.on('error', function(e) {
-  console.log('>>> minifier error', e)
+  console.log('>>> minifier error', e);
   process.exit(1);
 });
 
@@ -53,10 +54,41 @@ timer = setInterval(function () {
   }
 }, 100);
 
-// Build .min.js
-minifier.minify(jsIndex, { output: destination + '_6ltyr.min.js', noComments: true });
-minifier.minify(jsError, { output: destination + '_6kgkb.min.js', noComments: true });
-
 // Build .min.css
 minifier.minify(cssIndex, { output: destination + '_oc2y0.min.css', noComments: true });
 minifier.minify(cssError, { output: destination + '_tn2fu.min.css', noComments: true });
+
+
+// Build .min.js
+if (environment === 'development') {
+  // development
+  console.log('using >>>development');
+  var options = {
+    noComments: true,
+    uglify: {
+      output: {
+        beautify: true,
+        indent_level: 2,
+        width: 100,
+        comments: true
+      },
+      compressor: {}
+    },
+  };
+
+  minifier.minify(jsIndex, Object.assign({
+    output: destination + '_6ltyr.dev.js'
+  }, options));
+
+  minifier.minify(jsError, Object.assign({
+    output: destination + '_6kgkb.dev.js'
+  }, options));
+} else if (environment === 'production') {
+  // Production
+  console.log('using >>>production');
+  minifier.minify(jsIndex, { output: destination + '_6ltyr.min.js', noComments: true });
+  minifier.minify(jsError, { output: destination + '_6kgkb.min.js', noComments: true });
+} else {
+  console.log('>>> minifier error, Please specify an environment.');
+  process.exit(1);
+}
