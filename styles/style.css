@@ -56,115 +56,131 @@ img.clippy {
  * Tooltip styling.
  */
 .tooltipped {
-    position: relative;
-    z-index: 2000;
+  position: relative;
+  z-index: 2000;
 }
 
 .tooltipped:after {
-    position: absolute;
-    z-index: 1000000;
-    display: none;
-    padding: 5px 8px;
-    font: normal normal 11px / 1.5 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-    color: #fff;
-    text-align: center;
-    text-decoration: none;
-    text-shadow: none;
-    text-transform: none;
-    letter-spacing: normal;
-    word-wrap: break-word;
-    white-space: pre;
-    pointer-events: none;
-    content: attr(aria-label);
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 3px;
-    -webkit-font-smoothing: subpixel-antialiased
+  position: absolute;
+  z-index: 1000000;
+  display: none;
+  padding: 5px 8px;
+  font: normal normal 11px / 1.5 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: break-word;
+  white-space: pre;
+  pointer-events: none;
+  content: attr(aria-label);
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 3px;
+  -webkit-font-smoothing: subpixel-antialiased
 }
 
 .tooltipped:before {
-    position: absolute;
-    z-index: 1000001;
-    display: none;
-    width: 0;
-    height: 0;
-    color: rgba(0, 0, 0, 0.8);
-    pointer-events: none;
-    content: "";
-    border: 5px solid transparent
+  position: absolute;
+  z-index: 1000001;
+  display: none;
+  width: 0;
+  height: 0;
+  color: rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  content: "";
+  border: 5px solid transparent
 }
 
 .tooltipped:hover:before, .tooltipped:hover:after, .tooltipped:active:before,
 .tooltipped:active:after, .tooltipped:focus:before, .tooltipped:focus:after {
-    display: inline-block;
-    text-decoration: none
+  display: inline-block;
+  text-decoration: none
 }
 
 .tooltipped-multiline:hover:after, .tooltipped-multiline:active:after,
 .tooltipped-multiline:focus:after {
-    display: table-cell
+  display: table-cell
 }
 
 .tooltipped-w:after {
-    right: 100%;
-    bottom: 50%;
-    margin-right: 5px;
-    -webkit-transform: translateY(50%);
-    -ms-transform: translateY(50%);
-    transform: translateY(50%)
+  right: 100%;
+  bottom: 50%;
+  margin-right: 5px;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%)
 }
 
 .tooltipped-w:before {
-    top: 50%;
-    bottom: 50%;
-    left: -5px;
-    margin-top: -5px;
-    border-left-color: rgba(0, 0, 0, 0.8)
+  top: 50%;
+  bottom: 50%;
+  left: -5px;
+  margin-top: -5px;
+  border-left-color: rgba(0, 0, 0, 0.8)
+}
+
+.tooltipped-e::after {
+  bottom: 50%;
+  left: 100%;
+  margin-left: 5px;
+  -webkit-transform: translateY(50%);
+  transform: translateY(50%)
+}
+
+.tooltipped-e::before {
+  top: 50%;
+  right: -5px;
+  bottom: 50%;
+  margin-top: -5px;
+  border-right-color: rgba(0, 0, 0, 0.8)
 }
 
 .tooltipped-multiline:after {
-    width: -webkit-max-content;
-    width: -moz-max-content;
-    width: max-content;
-    max-width: 250px;
-    word-break: break-word;
-    word-wrap: normal;
-    white-space: pre-line;
-    border-collapse: separate
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  max-width: 250px;
+  word-break: break-word;
+  word-wrap: normal;
+  white-space: pre-line;
+  border-collapse: separate
 }
 
 .tooltipped-multiline.tooltipped-s:after, .tooltipped-multiline.tooltipped-n:after {
-    right: auto;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%)
+  right: auto;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%)
 }
 
 .tooltipped-multiline.tooltipped-w:after, .tooltipped-multiline.tooltipped-e:after {
-    right: 100%
+  right: 100%
 }
 
 @media screen and (min-width: 0\0) {
-    .tooltipped-multiline:after {
-        width: 250px
-    }
+  .tooltipped-multiline:after {
+    width: 250px
+  }
 }
 
 .tooltipped-sticky:before, .tooltipped-sticky:after {
-    display: inline-block
+  display: inline-block
 }
 
 .tooltipped-sticky.tooltipped-multiline:after {
-    display: table-cell
+  display: table-cell
 }
 
 .fullscreen-overlay-enabled.dark-theme .tooltipped:after {
-    color: #000;
-    background: rgba(255, 255, 255, 0.8)
+  color: #000;
+  background: rgba(255, 255, 255, 0.8)
 }
 
 .fullscreen-overlay-enabled.dark-theme .tooltipped.tooltipped-w:before {
-    border-left-color: rgba(255, 255, 255, 0.8)
+  border-left-color: rgba(255, 255, 255, 0.8)
 }
 
 /*
@@ -190,58 +206,60 @@ img.clippy {
 .loader.is-loading {
   display: block;
   position: absolute;
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 34px;
   top: 50%;
   left: 50%;
   background-image: url('../images/akinjide-loader.png');
-  background-position: -280px 0;
-  -webkit-transform: translate(-50%, -50%);  /*Safari*/
-      -ms-transform: translate(-50%, -50%); /* IE 9 */
-          transform: translate(-50%, -50%);
-  -webkit-animation: keyframes-loading .8s steps(21) infinite;  /*Safari*/
-     -moz-animation: keyframes-loading .8s steps(21) infinite;  /*Mozilla*/
-      -ms-animation: keyframes-loading .8s steps(21) infinite;  /* IE 9 */
-          animation: keyframes-loading .8s steps(21) infinite
+  background-size: 1600%;
+  background-repeat: no-repeat;
+  -webkit-animation: keyframes-loading 0.5s steps(15) infinite;  /*Safari*/
+     -moz-animation: keyframes-loading 0.5s steps(15) infinite;  /*Mozilla*/
+      -ms-animation: keyframes-loading 0.5s steps(15) infinite;  /* IE 9 */
+          animation: keyframes-loading 0.5s steps(15) infinite;
 }
 
 .preloader.done-loading {
   display: none;
 }
 
-@-webkit-keyframes keyframes-loading {
-  from {
-    background-position: 0 0
+@-moz-keyframes keyframes-loading {
+  0% {
+    background-position: left
   }
-  to {
-    background-position: -840px
+
+  100% {
+    background-position: right
   }
 }
 
-@-moz-keyframes keyframes-loading {
-  from {
-    background-position: 0 0
+@-webkit-keyframes keyframes-loading {
+  0% {
+    background-position: left
   }
-  to {
-    background-position: -840px
+
+  100% {
+    background-position: right
   }
 }
 
 @-ms-keyframes keyframes-loading {
-  from {
-    background-position: 0 0
+  0% {
+    background-position: left
   }
-  to {
-    background-position: -840px
+
+  100% {
+    background-position: right
   }
 }
 
 @keyframes keyframes-loading {
-  from {
-    background-position: 0 0
+  0% {
+    background-position: left
   }
-  to {
-    background-position: -840px
+
+  100% {
+    background-position: right
   }
 }
 
