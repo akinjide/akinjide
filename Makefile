@@ -13,7 +13,7 @@ all:
 	aws s3 sync . $(S3_BUCKET) --exclude 'scripts/*' --exclude 'contact.php' --exclude 'minifer.js' --exclude 'node_modules/*' --exclude '.DS_Store' --exclude '.git/*' --exclude 'Makefile' --acl public-read --delete
 
 develop:
-	node $(MIN_PATH)
+	node $(MIN_PATH) development
 
 	jade \
 		--pretty \
@@ -25,9 +25,11 @@ develop:
 	python ./serve.py
 
 build:
-	node minifer.js
+	node $(MIN_PATH) production
 
 	jade \
-	$(PUG_SRC) \
-	--out \
-	$(PUG_DIR)
+		$(PUG_SRC) \
+		--out \
+		$(PUG_DIR)
+
+.PHONY: build
