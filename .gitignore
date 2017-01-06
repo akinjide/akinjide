@@ -4,3 +4,4 @@ akinjide-pubkey.asc
 node_modules/
 build/
 npm-debug.log
+*.html
