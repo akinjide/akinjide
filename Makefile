@@ -10,7 +10,7 @@ PUG_DIR=./
 MIN_PATH=./minifer.js
 
 all:
-	aws s3 sync . $(S3_BUCKET) --exclude 'scripts/*' --exclude 'contact.php' --exclude 'minifer.js' --exclude 'node_modules/*' --exclude '.DS_Store' --exclude '.git/*' --exclude 'Makefile' --acl public-read --delete
+	aws s3 sync . $(S3_BUCKET) --exclude 'scripts/*' --exclude 'contact.php' --exclude '*.bak' --exclude 'serve.py' --exclude 'minifer.js' --exclude 'node_modules/*' --exclude '.DS_Store' --exclude '.git/*' --exclude 'Makefile' --acl public-read --delete
 
 develop:
 	node $(MIN_PATH) development
