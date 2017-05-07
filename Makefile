@@ -10,9 +10,11 @@ PUG_DIR=./
 MIN_PATH=./minifer.js
 
 all:
+	@echo Deploying...
 	aws s3 sync . $(S3_BUCKET) --exclude 'scripts/*' --exclude 'contact.php' --exclude '*.bak' --exclude 'serve.py' --exclude 'minifer.js' --exclude 'node_modules/*' --exclude '.DS_Store' --exclude '.git/*' --exclude 'Makefile' --acl public-read --delete
 
 develop:
+	@echo Starting...
 	node $(MIN_PATH) development
 
 	jade \
@@ -25,6 +27,7 @@ develop:
 	python ./serve.py
 
 build:
+	@echo Building app...
 	node $(MIN_PATH) production
 
 	jade \

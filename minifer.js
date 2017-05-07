@@ -63,6 +63,7 @@ minifier.minify(cssError, { output: destination + '_tn2fu.min.css', noComments: 
 if (environment === 'development') {
   // development
   console.log('using >>>development');
+
   var options = {
     noComments: true,
     uglify: {
