@@ -11,6 +11,9 @@ body {
   padding: 0px;
   font-family: 'Open Sans', -apple-system, ".SFNSDisplay-Regular", "Helvetica Neue", Helvetica, sans-serif;
   font-size: 12px; /* 1em */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 /*
@@ -194,14 +197,24 @@ img.clippy {
   z-index: 9999;
   left: 0;
   top: 0;
-  -webkit-transition: opacity .25s ease-in-out; /*Safari*/
-     -moz-transition: opacity .25s ease-in-out; /*Mozilla*/
-          transition: opacity .25s ease-in-out;
+/*   -webkit-transition: opacity .25s ease-in-out; /*Safari*/
+/*      -moz-transition: opacity .25s ease-in-out; /*Mozilla*/
+/*           transition: opacity .25s ease-in-out; */
 }
 
+.backdrop-filter {
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  background-color: rgba(255, 255, 255, .65);
+  -webkit-transition: background-color .03s ease;
+  transition: background-color .03s ease
+}
+
+/*
 .preloader:hover {
   opacity: .96;
 }
+ */
 
 .loader.is-loading {
   display: block;
@@ -761,6 +774,11 @@ header {
   color: #666;
 }
 
+.timeline li .timelineUnit p a {
+  font-weight: bold;
+  color: #7D97AD;
+}
+
 /* Tooltip styling. */
 .tooltip {
   position: absolute;
@@ -974,7 +992,7 @@ header {
    * Images list styling.
    */
 #book-list {
-  width: 820px;
+  width: 840px;
   overflow: hidden;
 }
 
@@ -1006,14 +1024,15 @@ header {
 }
 
 #book-list li:hover .title {
-  /*color: #7D97AD;*/
+  color: #7D97AD;
 }
 
 #book-list li .title {
-  font-size: 12px;
-  margin-top: 15px;
-  font-weight: 400;
+  font-size: 1em;
   color: #3A3A3A;
+  font-weight: 400;
+  padding: 10px 6px;
+  line-height: 1.4em;
 }
 
 #book-list li .categorie {

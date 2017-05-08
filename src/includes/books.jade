@@ -1,7 +1,6 @@
 section#book
-  - var tags = ["All", "Programming", "Design", "Engineering", "Architecture"];
-  - var languages = ["Node.js", "Python", "CSS"];
-  - var books = ["Mean Machine", "Learn Python the Hard Way", "Building Scalable Apps with Redis and Node.js"];
+  - var tags = ["All", "Programming", "Design", "Engineering", "Architecture", "DevOps", "Security", "Databases", "UI And UX"];
+  - var books = ["Mean Machine", "Learn Python the Hard Way", "Building Scalable Apps with Redis and Node.js", "The Heroku Hacker’s Guide", "Express.js Middleware"];
 
   ul.cats-filter#book-filter
     each tag in tags
@@ -14,14 +13,27 @@ section#book
 
   .extra-text Books I've read and recommend
   ul#book-list
-    li&attributes({ class: tags[1].toLowerCase() })
+    li(class=[tags[1].toLowerCase()])
       a(href="#", rel="book").folio
         img(src="book/mean-machine.png" alt="#{books[0]} Book")
         h2.title !{books[0]}
-        span.categorie !{languages[0]} / !{tags[1]}
 
-    li&attributes({ class: tags[1].toLowerCase() })
+    li(class=[tags[1].toLowerCase()])
       a(href="#", rel="book").folio
         img(src="book/learn-python-hard-way.png" alt="#{books[1]} Book")
         h2.title !{books[1]}
-        span.categorie !{languages[1]} / !{tags[1]}
+
+    li(class=[tags[1].toLowerCase(), tags[3].toLowerCase()])
+      a(href="#", rel="book").folio
+        img(src="book/building-scalable-apps-with-redis-and-nodejs.png" alt="#{books[2]} Book")
+        h2.title !{books[2]}
+
+    li(class=[tags[4].toLowerCase(), tags[3].toLowerCase(), tags[5].toLowerCase()])
+      a(href="#", rel="book").folio
+        img(src="book/the-heroku-hackers-guide.png" alt="#{books[3]} Book")
+        h2.title !{books[3]}
+
+    li(class=[tags[1].toLowerCase(), tags[6].toLowerCase()])
+      a(href="#", rel="book").folio
+        img(src="book/expressjs-middleware.png" alt="#{books[4]} Book")
+        h2.title !{books[4]}
