@@ -15,7 +15,7 @@ all:
 
 develop:
 	@echo Starting...
-	mkdir build
+	if [ -d build ]; then echo "\n  >>> Directory given already exists...\n"; else mkdir build; fi
 	node $(MIN_PATH) development
 
 	jade \
@@ -29,6 +29,7 @@ develop:
 
 build:
 	@echo Building app...
+	if [ -d build ]; then echo "\n  >>> Directory given already exists...\n"; else mkdir build; fi
 	node $(MIN_PATH) production
 
 	jade \

@@ -62,16 +62,19 @@ minifier.minify(cssError, { output: destination + '_tn2fu.min.css', noComments: 
 // Build .min.js
 if (environment === 'development') {
   // development
-  console.log('using >>>development');
+  console.log('\n  >>> using Development\n');
 
   var options = {
     noComments: true,
     uglify: {
       output: {
         beautify: true,
+        bracketize: true,
         indent_level: 2,
         width: 100,
-        comments: true
+        comments: true,
+        wrap_iife: true,
+        max_line_len: 320000
       },
       compressor: {}
     },
@@ -86,7 +89,7 @@ if (environment === 'development') {
   }, options));
 } else if (environment === 'production') {
   // Production
-  console.log('using >>>production');
+  console.log('\n  >>> using Production\n');
   minifier.minify(jsIndex, { output: destination + '_6ltyr.min.js', noComments: true });
   minifier.minify(jsError, { output: destination + '_6kgkb.min.js', noComments: true });
 } else {
