@@ -1,6 +1,6 @@
 section#portfolio
 
-  - var tags = ["All", "Webdesign", "Photoghraphy", "Illustration", "Print", "Animation"];
+  - var tags = ["All", "Webdesign", "Photoghraphy", "Illustration", "Print", "Animation", "Terminal", "Opensource"];
 
   ul.cats-filter#portfolio-filter
     each tag in tags
@@ -24,3 +24,9 @@ section#portfolio
         img(src="portfolio/2-thumb.png" alt="")
         h2.title Medlenna
         span.categorie !{tags[1]} / !{tags[4]}
+
+    li.terminal&attributes({ class: tags[7].toLowerCase() })
+      a(href="portfolio/3.jpg", rel="portfolio").folio
+        img(src="portfolio/3-thumb.jpg" alt="")
+        h2.title Aboki
+        span.categorie !{tags[6]} / !{tags[7]}

@@ -15,6 +15,7 @@ all:
 
 develop:
 	@echo Starting...
+	mkdir build
 	node $(MIN_PATH) development
 
 	jade \
