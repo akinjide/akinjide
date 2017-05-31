@@ -1,6 +1,6 @@
 section#book
   - var tags = ["All", "Programming", "Design", "Engineering", "Architecture", "DevOps", "Security", "Databases", "UI And UX"];
-  - var books = ["Mean Machine", "Learn Python the Hard Way", "Building Scalable Apps with Redis and Node.js", "The Heroku Hacker’s Guide", "Express.js Middleware"];
+  - var books = ["Mean Machine", "Learn Python the Hard Way", "Building Scalable Apps with Redis and Node.js", "The Heroku Hacker’s Guide", "Express.js Middleware", "Node Security"];
 
   ul.cats-filter#book-filter
     each tag in tags
@@ -37,3 +37,8 @@ section#book
       a(href="#", rel="book").folio
         img(src="book/expressjs-middleware.png" alt="#{books[4]} Book")
         h2.title !{books[4]}
+
+    li(class=[tags[1].toLowerCase(), tags[6].toLowerCase()])
+      a(href="#", rel="book").folio
+        img(src="book/node-security.png" alt="#{books[5]} Book")
+        h2.title !{books[5]}
