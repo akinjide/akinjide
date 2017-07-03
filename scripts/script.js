@@ -4,9 +4,9 @@
 jQuery(window).load(function() {
 
   // Preloader
-  var $loader = $('.loader'),
-      $preloader = $('.preloader'),
-      $body = $('body');
+  var $loader = $('.loader');
+  var $preloader = $('.preloader');
+  var $body = $('body');
 
       $loader.addClass("is-loading").delay(500).fadeOut(1000, function() {
         $preloader.fadeOut(500).addClass("done-loading");
@@ -17,10 +17,10 @@ jQuery(window).load(function() {
 
 
   // Needed variables.
-  var $errorBanner = $('#error-banner'),
-      $errorHide = $('#error-hide'),
-      $errorRefresh = $('#error-refresh'),
-      condition;
+  var $errorBanner = $('#error-banner');
+  var $errorHide = $('#error-hide');
+  var $errorRefresh = $('#error-refresh');
+  var condition;
 
   function updateOnlineStatus(event) {
     condition = navigator.onLine ? "online" : "offline";
@@ -84,18 +84,11 @@ jQuery(document).ready(function() {
   var clipboard = new Clipboard('[data-clipboard-demo]');
 
   clipboard.on('success', function(e) {
-    console.log(e, 'success');
     e.clearSelection();
-    console.info('Action:', e.action);
-    console.info('Text:', e.text);
-    console.info('Trigger:', e.trigger);
     showTooltip(e.trigger, 'Copied!');
   })
 
   clipboard.on('error', function(e) {
-    console.log(e, 'error')
-    console.error('Action:', e.action);
-    console.error('Trigger:', e.trigger);
     showTooltip(e.trigger, fallbackMessage(e.action));
   });
 
@@ -172,9 +165,9 @@ jQuery(document).ready(function() {
   $('.skills li .rating').each(function(index, e) {
 
     // Variables
-    var ratNum = 7,
-        $rat = $(e).attr('data-rat'),
-        point = '<span></span';
+    var ratNum = 7;
+    var $rat = $(e).attr('data-rat');
+    var point = '<span></span';
 
     // Append points.
     while (ratNum > 0) {
@@ -393,14 +386,14 @@ jQuery(document).ready(function() {
    */
 
     // Needed variables.
-    var $contactform = $('#contactform'),
-        success = 'Your message has been sent. Thank you!',
-        $remember = $("#remember"),
-        $notify = $("#notify"),
-        $legalNotice = $('#legal-notice'),
-        cookieEnabled,
+    var $contactform = $('#contactform');
+    var success = 'Your message has been sent. Thank you!';
+    var $remember = $("#remember");
+    var $notify = $("#notify");
+    var $legalNotice = $('#legal-notice');
+    var cookieEnabled;
         // url = 'http://tinweb.com.ng/tinweb.com.ng/akinjide/contact.php';
-        url = 'https://formspree.io/r@akinjide.me';
+    var url = 'https://formspree.io/r@akinjide.me';
 
     // Check for cookieState
     cookieEnabled = (navigator.cookieEnabled) ? true : false;
@@ -431,8 +424,7 @@ jQuery(document).ready(function() {
             Cookies.defaults = { expires: 30, path: '', secure: true, domain: 'resume.akinjide.me' };
             Cookies.set('_USN', $name);
             Cookies.set('_UEM', $email);
-          }
-          else {
+          } else {
             Cookies.remove('_USN', { path: '' });
             Cookies.remove('_UEM', { path: '' });
           }
@@ -449,8 +441,7 @@ jQuery(document).ready(function() {
             $remember.prop("checked", $name);
           }
         }())
-      }
-      else {
+      } else {
         $legalNotice.removeClass("hidden");
         $("label[for='remember']").addClass('not-selected').hide();
       }
@@ -485,8 +476,7 @@ jQuery(document).ready(function() {
     $contactform.keyup(function() {
       if (validator.numberOfInvalids() > 0) {
         $contactform.find("input[type='submit']").attr('disabled', true).addClass('disabled');
-      }
-      else {
+      } else {
         $contactform.find("input[type='submit']").removeAttr('disabled').removeClass('disabled');
       }
     });
@@ -510,8 +500,7 @@ jQuery(document).ready(function() {
           response = '<div class="success">' + success + '</div>';
           $contactform.find("textarea").val("");
           $contactform.addClass('has-error');
-        }
-        else {
+        } else {
           response = '<div class="error">' + msg.errors.message + '</div>';
         }
 
@@ -535,60 +524,60 @@ jQuery(document).ready(function() {
    */
 
     // Needed variables.
-    var $map = $('#map'),
-        $tabContactClass = ('tab-contact'),
-        lat = '6.507093',
-        long = '3.383739';
+    var $map = $('#map');
+    var $tabContactClass = ('tab-contact');
+    var lat = '6.507093';
+    var long = '3.383739';
 
-        $map.gmap().bind('init', function(ev, map) {
-          $map.gmap('addMarker', {
-            'position': lat + ',' + long,
-            'icon': 'images/pin.png',
-            'bounds': true
-          }).click(function() {
-            $map.gmap('openInfoWindow', {
-              'content': 'I am here!<br><br><strong>Latitude:</strong> ' + lat + '<br><strong>Longitude:</strong> ' + long + '<br>'
-            }, this);
-          });
+    $map.gmap().bind('init', function(ev, map) {
+      $map.gmap('addMarker', {
+        'position': lat + ',' + long,
+        'icon': 'images/pin.png',
+        'bounds': true
+      }).click(function() {
+        $map.gmap('openInfoWindow', {
+          'content': 'I am here!<br><br><strong>Latitude:</strong> ' + lat + '<br><strong>Longitude:</strong> ' + long + '<br>'
+        }, this);
+      });
 
-          $map.gmap('option', 'styles', [{
-            "stylers": [{
-                "hue": "#FFFFFF"
-              }, {
-                saturation: -100
-              }, {
-                gamma: 2
-              }
-            ]
-          }]);
-          $map.gmap('option', 'disableDefaultUI', true);
-          $map.gmap('option', 'zoom', 16);
-        });
+      $map.gmap('option', 'styles', [{
+        "stylers": [{
+            "hue": "#FFFFFF"
+          }, {
+            saturation: -100
+          }, {
+            gamma: 2
+          }
+        ]
+      }]);
+      $map.gmap('option', 'disableDefaultUI', true);
+      $map.gmap('option', 'zoom', 16);
+    });
 
-        // $map.gmap().bind('init', function(ev, map) {
-        //   // Detect user location
-        //   if (navigator.geolocation) {
-        //     navigator.geolocation.getCurrentPosition(function(position) {
-        //       var longtitude =  parseFloat(position.coords.longitude);
-
-        //       $map.gmap('addMarker', {
-        //           'position': position.coords.latitude + ',' + longtitude,
-        //           'icon': 'images/pin.png',
-        //           'bounds': true,
-        //           'animation': google.maps.Animation.BOUNCE
-        //         }).click(function() {
-        //           $map.gmap('openInfoWindow', {
-        //             'content': 'You\'re here!<br><br><strong>Latitude:</strong> ' + position.coords.latitude + '<br><strong>Longitude:</strong> ' + longtitude + '<br>'
-        //           }, this);
-        //       });
-
-        //       var latLng = new google.maps.LatLng(position.coords.latitude, longtitude);
-        //       $map.gmap('option', 'center', latLng);
-        //     }, function() {
-        //       console.log('Couldn\'t find you :(');
-        //     });
-        //   }
-        // });
+//   $map.gmap().bind('init', function(ev, map) {
+//     // Detect user location
+//     if (navigator.geolocation) {
+//       navigator.geolocation.getCurrentPosition(function(position) {
+//         var longtitude =  parseFloat(position.coords.longitude);
+//
+//         $map.gmap('addMarker', {
+//             'position': position.coords.latitude + ',' + longtitude,
+//             'icon': 'images/pin.png',
+//             'bounds': true,
+//             'animation': google.maps.Animation.BOUNCE
+//           }).click(function() {
+//             $map.gmap('openInfoWindow', {
+//               'content': 'You\'re here!<br><br><strong>Latitude:</strong> ' + position.coords.latitude + '<br><strong>Longitude:</strong> ' + longtitude + '<br>'
+//             }, this);
+//         });
+//
+//         var latLng = new google.maps.LatLng(position.coords.latitude, longtitude);
+//         $map.gmap('option', 'center', latLng);
+//       }, function() {
+//         console.log('Couldn\'t find you :(');
+//       });
+//     }
+//   });
 
     // Refresh map.
     $content.bind('easytabs:after', function(evt, tab, panel) {
@@ -601,8 +590,8 @@ jQuery(document).ready(function() {
    */
 
     // Needed variables.
-    var $tip = $('.tooltip'),
-        $tipcontent = $('.tooltip_content');
+    var $tip = $('.tooltip');
+    var $tipcontent = $('.tooltip_content');
 
     $tip.click(function( click ) {
       $(this).toggleClass("tooltip--on");
@@ -617,15 +606,13 @@ jQuery(document).ready(function() {
 
         if (minSpace < spaceNeeded) {
           $(this).parent().addClass('right');
-        }
-        else {
+        } else {
           $(this).parent().removeClass('right');
         }
 
         if (offset.left < 24) {
           $(this).parent().addClass('left');
-        }
-        else {
+        } else {
           $(this).parent().removeClass('left');
         }
       });
