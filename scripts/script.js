@@ -618,6 +618,23 @@ jQuery(document).ready(function() {
       });
     });
 
+
+  /*
+   * ServiceWorker.
+   */
+
+    if ('serviceWorker' in navigator) {
+      navigator
+        .serviceWorker
+        .register('./service-worker.js', { scope: './'})
+        .then(function(registration) {
+          console.log('[ServiceWorker] Register')
+        })
+        .catch(function(error) {
+          console.log('[ServiceWorker] Failed to Register')
+        })
+    }
+
     console.clear();
     console.log(showMessage());
 });
