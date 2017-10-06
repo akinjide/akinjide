@@ -1,6 +1,8 @@
 section#portfolio
 
   - var tags = ["All", "Webdesign", "Photoghraphy", "Illustration", "Print", "Animation", "Terminal", "Opensource"];
+  - var portfolios = [{ name: "Akinjide www", image_src: "6.jpg", tags: [1, 4], thumb_src: "6-thumb.jpg" }, { name: "Medlenna", image_src: "2.png", tags: [1, 5], thumb_src: "2-thumb.png" }, { name: "Aboki", image_src: "3.jpg", tags: [6, 7], thumb_src: "3-thumb.jpg" }, { name: "Ufus", image_src: "4.jpg", tags: [1, 7], thumb_src: "4-thumb.jpg" }]
+  - var classes = []
 
   ul.cats-filter#portfolio-filter
     each tag in tags
@@ -13,26 +15,12 @@ section#portfolio
 
   .extra-text Some of the projects I'm proud of
   ul#portfolio-list
-    li.print&attributes({ class: tags[1].toLowerCase() })
-      a(href="portfolio/6.jpg", rel="portfolio").folio
-        img(src="portfolio/6-thumb.jpg" alt="")
-        h2.title Akinjide www
-        span.categorie !{tags[1]}
+    each portfolio in portfolios
+      each tag, index in portfolio.tags
+        - classes[index] = tags[tag].toLowerCase()
 
-    li.animation&attributes({ class: tags[1].toLowerCase() })
-      a(href="portfolio/2.png", rel="portfolio").folio
-        img(src="portfolio/2-thumb.png" alt="")
-        h2.title Medlenna
-        span.categorie !{tags[1]} / !{tags[4]}
-
-    li.terminal&attributes({ class: tags[7].toLowerCase() })
-      a(href="portfolio/3.jpg", rel="portfolio").folio
-        img(src="portfolio/3-thumb.jpg" alt="")
-        h2.title Aboki
-        span.categorie !{tags[6]} / !{tags[7]}
-
-    li.Webdesign&attributes({ class: tags[7].toLowerCase() })
-      a(href="portfolio/4.jpg", rel="portfolio").folio
-        img(src="portfolio/4-thumb.jpg" alt="")
-        h2.title Ufus
-        span.categorie !{tags[1]} / !{tags[7]}
+      li(class=classes)
+        a(href="portfolio/#{portfolio.image_src}" target="_blank" rel="portfolio").folio
+          img(src="portfolio/#{portfolio.thumb_src}" alt="")
+          h2.title !{portfolio.name}
+          span.categorie !{classes.join(',').split(',').join(' / ')}
