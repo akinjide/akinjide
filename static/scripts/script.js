@@ -625,7 +625,7 @@ jQuery(document).ready(function() {
     if ('serviceWorker' in navigator) {
       navigator
         .serviceWorker
-        .register('./service-worker.js', { scope: './'})
+        .register('./sw.js', { scope: './'})
         .then(function(registration) {
           console.log('[ServiceWorker] Register')
         })

@@ -32,41 +32,41 @@ books:
 
   completed:
     - name: 'Mean Machine'
-      url: '#'
+      url: 'https://leanpub.com/mean-machine'
       tags:
         - 1
 
     - name: 'Learn Python the Hard Way'
-      url: '#'
+      url: 'https://www.amazon.com/Learn-Python-Hard-Way-Introduction/dp/0321884914'
       tags:
         - 1
 
     - name: 'Building Scalable Apps with Redis and Nodejs'
-      url: '#'
+      url: 'https://www.packtpub.com/web-development/building-scalable-apps-redis-and-nodejs'
       tags:
         - 1
         - 3
 
     - name: 'The Heroku Hackers Guide'
-      url: '#'
+      url: 'https://www.theherokuhackersguide.com'
       tags:
         - 4
         - 3
 
     - name: 'Expressjs Middleware'
-      url: '#'
+      url: 'https://ewiggin.gitbooks.io/expressjs-middleware/content/index.html'
       tags:
         - 1
         - 6
 
     - name: 'Node Security'
-      url: '#'
+      url: 'https://www.packtpub.com/web-development/node-security'
       tags:
         - 1
         - 6
 
     - name: 'Swift for Beginners Develop And Design'
-      url: '#'
+      url: 'https://www.goodreads.com/book/show/23818508-swift-for-beginners'
       tags:
         - 1
         - 2

@@ -8,7 +8,7 @@ var path = require('path');
 var isEnabled = process.argv[2] === 'development';
 
 var options = {
-  pretty: !isEnabled,
+  pretty: isEnabled,
   self: true,
   debug: isEnabled,
   compileDebug: isEnabled,

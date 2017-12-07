@@ -12,7 +12,6 @@ all:
 	@echo Deploying...
 	aws s3 sync . $(S3_BUCKET) \
 		--exclude 'static/scripts/*' \
-		--exclude '*.bak' \
 		--exclude 'bin/*' \
 		--exclude 'node_modules/*' \
 		--exclude '.DS_Store' \
@@ -31,7 +30,7 @@ build:
 	@echo Building app...
 	if [ -d build ]; then echo "\n  >>> Directory given already exists...\n"; else mkdir build; fi
 
-	node $(MIN_PATH) production
+	node $(MINIFY_PATH) production
 	node $(COMPILE_PATH) production
 
 .PHONY: build
