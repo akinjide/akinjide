@@ -4,14 +4,14 @@ block vars
   - var attributes = ['not-found'];
 
 block title
-  title 404 Not Found -&nbsp;Akinjide Bankoles' Resume
+  title 404 Not Found -&nbsp;#{self.author.personal.Name}s' Resume
 
 block styles
   link(href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css')
   link(rel="stylesheet" type="text/css" href="build/_tn2fu.min.css")
 
 block append scripts
-  script(type="text/javascript" src="build/_6kgkb.min.js")
+  script(type="text/javascript" src="build/#{self.javascript.four0four}")
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->

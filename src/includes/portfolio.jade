@@ -1,12 +1,10 @@
 section#portfolio
 
-  - var tags = ["All", "Webdesign", "Photoghraphy", "Illustration", "Print", "Animation", "Terminal", "Opensource"];
-  - var portfolios = [{ name: "Akinjide www", image_src: "6.jpg", tags: [1, 4], thumb_src: "6-thumb.jpg" }, { name: "Medlenna", image_src: "2.png", tags: [1, 5], thumb_src: "2-thumb.png" }, { name: "Aboki", image_src: "3.jpg", tags: [6, 7], thumb_src: "3-thumb.jpg" }, { name: "Ufus", image_src: "4.jpg", tags: [1, 7], thumb_src: "4-thumb.jpg" }]
   - var classes = []
 
   ul.cats-filter#portfolio-filter
-    each tag in tags
-      if tags[tag.indexOf('All')] === tag
+    each tag in self.portfolios.tags
+      if self.portfolios.tags[tag.indexOf('All')] === tag
         li
           a.transition.current&attributes({ href: '', 'data-filter': '*' })= tag
       else
@@ -15,12 +13,12 @@ section#portfolio
 
   .extra-text Some of the projects I'm proud of
   ul#portfolio-list
-    each portfolio in portfolios
+    each portfolio in self.portfolios.works
       each tag, index in portfolio.tags
-        - classes[index] = tags[tag].toLowerCase()
+        - classes[index] = self.portfolios.tags[tag].toLowerCase()
 
       li(class=classes)
-        a(href="portfolio/#{portfolio.image_src}" target="_blank" rel="portfolio").folio
-          img(src="portfolio/#{portfolio.thumb_src}" alt="")
+        a(href="static/portfolio/#{portfolio.image_src}" target="_blank" rel="portfolio").folio
+          img(src="static/portfolio/#{portfolio.thumb_src}" alt="")
           h2.title !{portfolio.name}
           span.categorie !{classes.join(',').split(',').join(' / ')}

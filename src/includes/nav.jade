@@ -1,19 +1,14 @@
 nav.menu
-  
-  - var icons = ['&#x43;', '&#x3a;', '&#x38;', '&#x59;', '&#x21;'];
-  - var urls = ['profile', 'resume', 'portfolio', 'book', 'contact'];
-
   ul.tabs
-    //- li.socials-text Social Profiles
-    each url, index in urls
+    each icon, url in self.navMap
       li.tmenu
-        if urls[urls.indexOf('profile')] === url
+        if 'profile' === url
           a.tab-profile&attributes({ href: '#' + url })
-            i!= icons[index]
+            i!= icon
             = url.charAt().toUpperCase() + url.slice(1)
         else
           a&attributes({ href: '#' + url })
-            i!= icons[index]
+            i!= icon
             = url.charAt().toUpperCase() + url.slice(1)
   a(href="#").prev#menu-prev &#xe073;
   a(href="#").next#menu-next &#xe076;

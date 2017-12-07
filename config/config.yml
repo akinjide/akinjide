@@ -1,0 +1,21 @@
+author:
+  name: 'AKINJIDE BANKOLE'
+  title: 'NODE JS / PYTHON'
+  subtitle: >
+    I like to code and build fun stuffs.
+    APIs, open source contribution, demo apps, whatever.
+    If it's fun, I'll dive in.
+  personal:
+    Name: 'Akinjide Bankole'
+    Birthday: 'July 21, 1995'
+    Address: 'Funsho Street, LG'
+    Email: 'r@akinjide.me'
+    Phone: '+234-802-924-5639'
+    Website: 'www.akinjide.me'
+
+params:
+  firstName: 'Akinjide'
+  lastName: 'Bankole'
+  city: 'Yaba, Lagos'
+  keyFingerprint: 'BB99 7052 37A0 284F D945  CEDB E418 77A3 EA43 D3E1'
+  resumeURL: 'https://aproxy.herokuapp.com?format=pdf&filename=resume&url=https://resume.akinjide.me/#resume'

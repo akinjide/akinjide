@@ -5,7 +5,7 @@ html(dir="ltr" lang="en-US" xmlns="http://www.w3.org/1999/xhtml" id=attributes)
   head
     include ./shared/header.jade
     block title
-      title Akinjide Bankoles' Resume
+      title #{self.author.personal.Name}s' Resume
     block head
       include ./shared/head.jade
 
@@ -13,13 +13,13 @@ html(dir="ltr" lang="en-US" xmlns="http://www.w3.org/1999/xhtml" id=attributes)
       link(rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300,800,700,400italic")
       link(rel="stylesheet" type="text/css" href="build/_oc2y0.min.css")
       <!--[if IEMobile]>
-      <link rel="stylesheet" type="text/css" href="styles/iemobile.css"/>
+      <link rel="stylesheet" type="text/css" href="static/styles/iemobile.css"/>
       <![endif]-->
 
     block scripts
       script(type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js")
       script(type="text/javascript").
-        window.jQuery || document.write('<script type="text/javascript" src="scripts/lib/jquery.min.js"><\/script>')
+        window.jQuery || document.write('<script type="text/javascript" src="static/scripts/lib/jquery.min.js"><\/script>')
 
   body
     block content

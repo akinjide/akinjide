@@ -1,153 +1,83 @@
 section#resume
   .timeline-section
+
     h3.main-heading Employment
     ul.timeline
-      li
-        .timelineUnit
-          h4 Mentor
-            span.timelineDate Feb 2017 - Present
-          h5 Codementor
-          p.
-            As a Mentor, I spend a lot of time reading other people’s code and
-            using my expertise in various technologies to constantly help fix annoying bugs,
-            scale tech stacks, or provide just any information that can help.
-      li
-        .timelineUnit
-          h4 Writer
-            span.timelineDate Jan 2017 - Present
-          h5 Scotch
-          p.
-            At Scotch, I write posts about various technologies in the world
-            of software development and programming.
-      li
-        .timelineUnit
-          h4 Programmer
-            span.timelineDate May 2015 - Present
-          h5 Andela
-          p.
-            As a Programmer at Andela, I constantly work with a
-            broad range technologies, build cool stuffs in Python,
-            Node.js -- as well as various web frameworks. I
-            also attend meetups, give talks on programming, design and
-            related topics, and actively contribute to the open source community.
-      li
-        .timelineUnit
-          h4 Editor
-            span.timelineDate Jan 2015 - Mar 2015
-          h5 Nigeria FashionPolice
-          p.
-            At Nigeria FashionPolice, I spent my time primarily writing fashion news,
-            articles and learned some cool stuff.
+
+      each job in self.resume.employment
+        li
+          .timelineUnit
+            h4 #{job['role']}
+              span.timelineDate= job['timeline']
+            h5 #{job['company']}
+            p #{job['description']}
+
       div.clear
 
     h3.main-heading Education
     ul.timeline
-      li
-        .timelineUnit
-          h4 Self Taught
-            span.timelineDate 2014
-          h5 Life
-          p.
-            I'm primarily self-taught. I've been designing since
-            I was roughly 19 years old, and have read through hundreds
-            of design books and articles.
-      li
-        .timelineUnit
-          h4 Lagos City Senior College
-            span.timelineDate 2010 - 2012
-          h5 High School, Science
-          p.
-            I was a science student, a member of Jet club back at school and
-            also graduated from this great school.
+
+      each education in self.resume.education
+        li
+          .timelineUnit
+            h4 #{education['where']}
+              span.timelineDate= education['timeline']
+            h5 #{education['level']}
+            p #{education['description']}
+
       div.clear
 
     h3.main-heading Open Source
     ul.timeline
-      li
-        .timelineUnit
-          h4 tw-syntax
-            span.timelineDate Feb 2017
-          h5 TextWrangler, BBEdit
-          p.
-            BBEdit/TextWrangler Language Module and Syntax highlighting.
-            <br>
-            <br>
-            <a href="https://github.com/akinjide/tw-syntax" target="_blank">https://github.com/akinjide/tw-syntax</a>
-      li
-        .timelineUnit
-          h4 cookiet
-            span.timelineDate Jun 2016
-          h5 Javascript
-          p.
-            A small, simple JavaScript cookies library.
-            <br>
-            <br>
-            <a href="https://github.com/akinjide/cookiet" target="_blank">https://github.com/akinjide/cookiet</a>
-      li
-        .timelineUnit
-          h4 squash
-            span.timelineDate Jun 2016
-          h5 Javascript, CSS, Node.js
-          p.
-            A simple utility tool, that minifies my CSS and JS.
-            <br>
-            <br>
-            <a href="https://github.com/akinjide/squash" target="_blank">https://github.com/akinjide/squash</a>
+
+      each open_source in self.resume.openSource
+        li
+          .timelineUnit
+            h4 #{open_source['title']}
+              span.timelineDate= open_source['timeline']
+            h5 #{open_source['language']}
+            p !{open_source['description']}
+
       div.clear
 
     h3.main-heading Community Contributions / Support
     ul.timeline
-      li
-        .timelineUnit
-          h4 Admin
-            span.timelineDate May 2016 - Present
-          h5 Facebook Developer Circle: Lagos
-          p.
-            A forum for developers in Lagos and its surroundings who are interested
-            in building on the Facebook platform to interact and collaborate other developers
-            who share similar interests.
-            <br>
-            <br>
-            <a href="https://www.facebook.com/groups/DevCLagos/" target="_blank">https://www.facebook.com/groups/DevCLagos/</a>
+
+      each community_contrib in self.resume.communityContrib
+        li
+          .timelineUnit
+            h4 #{community_contrib['role']}
+              span.timelineDate= community_contrib['timeline']
+            h5 #{community_contrib['group']}
+            p !{community_contrib['description']}
+
       div.clear
 
   div.skills-section
 
-    //- Programming
     h3.main-heading Programming Skills
 
-    - var programmingSkills = ['Python', 'Node.js', 'Go', 'Ruby', 'Swift / iOS', 'Flask', 'Express.js', 'Angular.js', 'VIM', '/(No)?SQL/', 'TDD'];
-    - var strengths = [4, 6, 1, 3, 1, 2, 6, 5, 4, 5, 4];
-
     ul.skills
-      each programmingSkill, index in programmingSkills
+      each point, skill in self.resume.skills.programming
         li
-          h4= programmingSkill
-          .rating&attributes({ 'data-rat': strengths[index] })
+          h4= skill
+          .rating&attributes({ 'data-rat': point })
 
-    //- Designing
     h3.main-heading Design Skills
 
-    - var designSkills = ['CSS', 'HTML', 'Pug', 'Javascript', 'JQuery', 'Photoshop', 'illustrator', 'Sketch 3', 'Style', 'Creativity'];
-    - var strengths = [6, 7, 7, 5, 6, 3, 3, 7, 4, 5];
-
     ul.skills
-      each designSkill, index in designSkills
+      each point, skill in self.resume.skills.design
         li
-          h4= designSkill
-          .rating&attributes({ 'data-rat': strengths[index] })
+          h4= skill
+          .rating&attributes({ 'data-rat': point })
 
-    //- Others
     h3.main-heading Other Skills
 
-    - var otherSkills = ['Gaming', 'Skating', 'Surfing Youtube', 'Writing', 'Public Speaking', 'German'];
-    - var strengths = [6, 2, 6, 4, 3, 2];
-
     ul.skills
-      each otherSkill, index in otherSkills
+      each point, skill in self.resume.skills.more
         li
-          h4=otherSkill
-          .rating&attributes({ 'data-rat': strengths[index] })
+          h4= skill
+          .rating&attributes({ 'data-rat': point })
 
     //- XP
     h3.main-heading XP
@@ -170,4 +100,8 @@ section#resume
         li
           .rating&attributes({ 'data-rat': skill })
   div.clear
-  a#downloadPDF.button.transition(title="Akinjide Resume" href="https://aproxy.herokuapp.com/resume" download="akinjide-resume") Download resume as PDF format
+
+  a#downloadPDF.button.transition(
+    title="#{self.params.firstName} Resume"
+    href="#{self.params.resumeURL}"
+    download="#{self.params.firstName.toLowerCase()}-resume") Download resume as PDF format

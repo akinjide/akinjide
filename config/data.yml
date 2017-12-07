@@ -1,0 +1,242 @@
+navMap:
+  profile: '&#x43;'
+  resume: '&#x3a;'
+  portfolio: '&#x38;'
+  book: '&#x59;'
+  contact: '&#x21;'
+
+social:
+  links:
+    - 'https://facebook.com/bakinjide'
+    - 'https://twitter.com/_akinjide'
+    - 'https://www.akinjide.me'
+    - 'https://github.com/akinjide'
+
+  icons:
+    - '&#x2a;'
+    - '&#x2c;'
+    - '&#x31;'
+    - '&#x33;'
+
+books:
+  tags:
+    - 'All'
+    - 'Programming'
+    - 'Design'
+    - 'Engineering'
+    - 'Architecture'
+    - 'DevOps'
+    - 'Security'
+    - 'Databases'
+    - 'UI And UX'
+
+  completed:
+    - name: 'Mean Machine'
+      url: '#'
+      tags:
+        - 1
+
+    - name: 'Learn Python the Hard Way'
+      url: '#'
+      tags:
+        - 1
+
+    - name: 'Building Scalable Apps with Redis and Nodejs'
+      url: '#'
+      tags:
+        - 1
+        - 3
+
+    - name: 'The Heroku Hackers Guide'
+      url: '#'
+      tags:
+        - 4
+        - 3
+
+    - name: 'Expressjs Middleware'
+      url: '#'
+      tags:
+        - 1
+        - 6
+
+    - name: 'Node Security'
+      url: '#'
+      tags:
+        - 1
+        - 6
+
+    - name: 'Swift for Beginners Develop And Design'
+      url: '#'
+      tags:
+        - 1
+        - 2
+
+portfolios:
+  tags:
+    - 'All'
+    - 'Webdesign'
+    - 'Photoghraphy'
+    - 'Illustration'
+    - 'Print'
+    - 'Animation'
+    - 'Terminal'
+    - 'Opensource'
+
+  works:
+    - name: 'Akinjide www'
+      image_src: '6.jpg'
+      thumb_src: '6-thumb.jpg'
+      tags:
+        - 1
+        - 4
+
+    - name: 'Medlenna'
+      image_src: '2.png'
+      thumb_src: '2-thumb.png'
+      tags:
+        - 1
+        - 5
+
+    - name: 'Aboki'
+      image_src: '3.jpg'
+      thumb_src: '3-thumb.jpg'
+      tags:
+        - 6
+        - 7
+
+    - name: 'Ufus'
+      image_src: '4.jpg'
+      thumb_src: '4-thumb.jpg'
+      tags:
+        - 1
+        - 7
+
+legal:  >
+  This website uses cookies to customize your experience,
+  and deliver personalized content,
+  i'll assume you're ok with this.
+  By using this website, you will be deemed to have agreed.
+
+resume:
+  employment:
+    - role: 'Mentor'
+      company: 'Codementor'
+      timeline: 'Feb 2017 - Present'
+      description: >
+        As a Mentor, I spend a lot of time reading other people’s code and
+        using my expertise in various technologies to constantly help fix annoying bugs,
+        scale tech stacks, or provide just any information that can help.
+
+    - role: 'Writer'
+      company: 'Scotch'
+      timeline: 'Jan 2017 - Present'
+      description: >
+        At Scotch, I write posts about various technologies in the world
+        of software development and programming.
+
+    - role: 'Programmer'
+      company: 'Andela'
+      timeline: 'May 2015 - Present'
+      description: >
+        As a Programmer, I constantly work with a
+        broad range technologies, build cool stuffs in Python,
+        Node.js -- as well as various web frameworks. I
+        also attend meetups, give talks on programming, design and
+        related topics, and actively contribute to the open source community.
+
+    - role: 'Editor'
+      company: 'FashionPolice'
+      timeline: 'Jan 2015 - Mar 2015'
+      description: >
+        As an Editor, I spent my time primarily writing fashion news,
+        articles and learned some cool stuff.
+
+  education:
+    - where: 'Self Taught'
+      timeline: '2014'
+      level: 'Life'
+      description: >
+        I'm primarily self-taught. I've been designing since
+        I was roughly 18 years old, and have read through hundreds
+        of design books, tutorials and articles.
+
+    - where: 'Lagos City Senior College'
+      timeline: '2010 - 2012'
+      level: 'High School, Science'
+      description: >
+        I was a science student, a member of Jet club back at school and
+        also graduated from this great school.
+
+  openSource:
+    - title: 'tw-syntax'
+      timeline: 'Feb 2017'
+      language: 'TextWrangler, BBEdit'
+      description: >
+        BBEdit/TextWrangler Language Module and Syntax highlighting.
+        <br>
+        <br>
+        <a href="https://github.com/akinjide/tw-syntax" target="_blank">https://github.com/akinjide/tw-syntax</a>
+
+    - title: 'cookiet'
+      timeline: 'Jun 2016'
+      language: 'Javascript'
+      description: >
+        A small, simple JavaScript cookies library.
+        <br>
+        <br>
+        <a href="https://github.com/akinjide/cookiet" target="_blank">https://github.com/akinjide/cookiet</a>
+
+    - title: 'squash'
+      timeline: 'Jun 2016'
+      language: 'Javascript, CSS, Node.js'
+      description: >
+        A simple utility tool, that minifies my CSS and JS.
+        <br>
+        <br>
+        <a href="https://github.com/akinjide/squash" target="_blank">https://github.com/akinjide/squash</a>
+
+  communityContrib:
+    - role: 'Admin'
+      timeline: 'May 2016 - Present'
+      group: 'Facebook Developer Circle: Lagos'
+      description: >
+        A forum for developers in Lagos and its surroundings who are interested
+        in building on the Facebook platform to interact and collaborate other developers
+        who share similar interests.
+        <br>
+        <br>
+        <a href="https://www.facebook.com/groups/DevCLagos/" target="_blank">https://www.facebook.com/groups/DevCLagos/</a>
+
+  skills:
+    programming:
+      'Python': 4
+      'Node.js': 6
+      'Go': 1
+      'Ruby': 3
+      'Swift / iOS': 1
+      'Flask': 2
+      'Express.js': 6
+      'Angular.js': 5
+      'VIM': 4
+      '/(No)?SQL/': 5
+      'TDD': 4
+
+    design:
+      'CSS': 6
+      'HTML': 7
+      'Pug': 7
+      'Javascript': 5
+      'JQuery': 6
+      'Photoshop': 3
+      'illustrator': 3
+      'Sketch 3': 7
+      'Style': 4
+      'Creativity': 5
+
+    more:
+      'Gaming': 6
+      'Skating': 2
+      'Surfing Youtube': 6
+      'Writing': 4
+      'Public Speaking': 3
+      'German': 2

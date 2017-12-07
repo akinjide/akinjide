@@ -1,13 +1,16 @@
 extends base
 
+block vars
+  - var attributes;
+
 block append scripts
-  script(type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyBm7BjffwF38_EX_1mrNgwSPLd6aA5TKeY")
-  script(type="text/javascript" src="build/_6ltyr.min.js")
+  script(type="text/javascript" src="https://maps.google.com/maps/api/js?key=#{self.keys.googleMaps}")
+  script(type="text/javascript" src="build/#{self.javascript.index}")
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
   noscript
-    link(rel="stylesheet" href="styles/noscript.css")
+    link(rel="stylesheet" href="static/styles/noscript.css")
 
 block content
   section#container
