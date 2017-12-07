@@ -118,7 +118,7 @@ jQuery(document).ready(function() {
     "You think that you can inject HTML?",
     "Mommm comfy.",
     "Let’s do the bamboo dance!",
-    "Don’t mess with Akinjide source code.",
+    "Don’t mess with this source code.",
     "Close the console, I’m cold.",
     "Licky licky, yummy yummy, kiss kiss <3",
     "What are you doing here!!??",
@@ -392,7 +392,6 @@ jQuery(document).ready(function() {
     var $notify = $("#notify");
     var $legalNotice = $('#legal-notice');
     var cookieEnabled;
-        // url = 'http://tinweb.com.ng/tinweb.com.ng/akinjide/contact.php';
     var url = 'https://formspree.io/r@akinjide.me';
 
     // Check for cookieState
@@ -532,7 +531,7 @@ jQuery(document).ready(function() {
     $map.gmap().bind('init', function(ev, map) {
       $map.gmap('addMarker', {
         'position': lat + ',' + long,
-        'icon': 'images/pin.png',
+        'icon': 'static/images/pin.png',
         'bounds': true
       }).click(function() {
         $map.gmap('openInfoWindow', {

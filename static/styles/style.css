@@ -223,7 +223,7 @@ img.clippy {
   height: 34px;
   top: 50%;
   left: 50%;
-  background-image: url('../images/akinjide-loader.png');
+  background-image: url('../images/loader.png');
   background-size: 1600%;
   background-repeat: no-repeat;
   -webkit-animation: keyframes-loading 0.5s steps(15) infinite;  /*Safari*/

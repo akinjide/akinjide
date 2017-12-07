@@ -18,7 +18,7 @@
 
   position: relative;
   background-color: #1d2b2a;
-  background-image: url(/images/404-stripe.png), url(/images/404-noise.png);
+  background-image: url(/static/images/404-stripe.png), url(/static/images/404-noise.png);
   background-repeat: repeat-x, repeat;
   background-position: 0 0%;
   background-attachment: fixed;
