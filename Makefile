@@ -5,36 +5,33 @@
 # - To initialize your S3 bucket as a website, run `aws s3 website $(S3_BUCKET) --index-document index.html`
 
 S3_BUCKET=s3://resume.akinjide.me/
-PUG_SRC=src/{index,404}.jade
-PUG_DIR=./
-MIN_PATH=./minifer.js
+MINIFY_PATH=./bin/minify
+COMPILE_PATH=./bin/compile
 
 all:
 	@echo Deploying...
-	aws s3 sync . $(S3_BUCKET) --exclude 'scripts/*' --exclude 'contact.php' --exclude '*.bak' --exclude 'serve.py' --exclude 'minifer.js' --exclude 'node_modules/*' --exclude '.DS_Store' --exclude '.git/*' --exclude 'Makefile' --acl public-read --delete
+	aws s3 sync . $(S3_BUCKET) \
+		--exclude 'static/scripts/*' \
+		--exclude '*.bak' \
+		--exclude 'bin/*' \
+		--exclude 'node_modules/*' \
+		--exclude '.DS_Store' \
+		--exclude '.git/*' \
+		--exclude 'Makefile' \
+		--acl public-read --delete
 
 develop:
 	@echo Starting...
 	if [ -d build ]; then echo "\n  >>> Directory given already exists...\n"; else mkdir build; fi
-	node $(MIN_PATH) development
 
-	jade \
-		--pretty \
-		--watch \
-		$(PUG_SRC) \
-		--out \
-		$(PUG_DIR)
-
-	python ./serve.py
+	node $(MINIFY_PATH) development
+	node $(COMPILE_PATH) development
 
 build:
 	@echo Building app...
 	if [ -d build ]; then echo "\n  >>> Directory given already exists...\n"; else mkdir build; fi
-	node $(MIN_PATH) production
 
-	jade \
-		$(PUG_SRC) \
-		--out \
-		$(PUG_DIR)
+	node $(MIN_PATH) production
+	node $(COMPILE_PATH) production
 
 .PHONY: build

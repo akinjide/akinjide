@@ -4,6 +4,8 @@
   "description": "",
   "main": "minifer.js",
   "dependencies": {
+    "jade": "^1.11.0",
+    "js-yaml": "^3.10.0",
     "minifier": "^0.8.0",
     "progress": "^1.1.8"
   },
