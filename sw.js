@@ -37,7 +37,7 @@ var cacheFiles = [
   '/portfolio/4.png',
   '/portfolio/6-thumb.png',
   '/portfolio/6.png',
-  'http://html5shiv.googlecode.com/svn/trunk/html5.js',
+//   'http://html5shiv.googlecode.com/svn/trunk/html5.js',
   'https://fonts.googleapis.com/css?family=Open+Sans:400,600,300,800,700,400italic',
   'https://fonts.googleapis.com/css?family=Fira+Mono',
   'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700',

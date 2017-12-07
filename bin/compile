@@ -1,0 +1,54 @@
+#!/usr/bin/env node
+
+var jade = require('jade');
+var yaml = require('js-yaml');
+var fs = require('fs');
+var path = require('path');
+
+var isEnabled = process.argv[2] === 'development';
+
+var options = {
+  pretty: !isEnabled,
+  self: true,
+  debug: isEnabled,
+  compileDebug: isEnabled,
+  cache: isEnabled
+};
+
+var YMLs = [
+  'config.yml',
+  'data.yml',
+  isEnabled ? 'conf.dev.yml' : 'conf.prod.yml'
+];
+
+// Compile the source code
+var locals = transformArrayToObject(parseYMLToJSON(YMLs));
+
+writeToDisk('404.html', jade.compileFile('src/404.jade', options), locals)
+writeToDisk('index.html', jade.compileFile('src/index.jade', options), locals)
+
+
+function writeToDisk(filename, fn, locals) {
+  fs.writeFileSync(filename, fn(locals));
+}
+
+function transformArrayToObject(data) {
+  return Object.assign({}, data[0], data[1], data[2])
+}
+
+function parseYMLToJSON(payload) {
+  return payload.map(function(file) {
+    try {
+      return yaml.safeLoad(read(path.join(__dirname, '..', 'config/'), file));
+    } catch (e) {
+      throw e
+    }
+  });
+}
+
+function read(dir, file) {
+  return fs.readFileSync(dir + file, {
+    encoding: 'utf8',
+    flag: 'r'
+  });
+}
