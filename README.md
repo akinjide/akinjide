@@ -15,7 +15,7 @@ Configure `config/*.yml` files to suite you need.
 
   - `data.yml` - for generating resume, portfolio, books and contact page.
   - `config.yml` - for generating meta tags and about, profile page.
-  - `conf.*.yml` - for configuring scripts and credentials.
+  - `sjc.yml` - for configuring scripts and styles. [auto-generated].
   - `src/includes/signature.txt` - add your fancy [text symbol](https://fsymbols.com/generators/) signature.
 
 ## Run
