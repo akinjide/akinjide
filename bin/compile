@@ -4,9 +4,9 @@ var jade = require('jade');
 var yaml = require('js-yaml');
 var fs = require('fs');
 var path = require('path');
+var args = process.argv;
 
-var isEnabled = process.argv[2] === 'development';
-
+var isEnabled = args[2] == 'development';
 var options = {
   pretty: isEnabled,
   self: true,
@@ -18,7 +18,7 @@ var options = {
 var YMLs = [
   'config.yml',
   'data.yml',
-  isEnabled ? 'conf.dev.yml' : 'conf.prod.yml'
+  'sjc.yml'
 ];
 
 // Compile the source code
@@ -28,15 +28,24 @@ writeToDisk('404.html', jade.compileFile('src/404.jade', options), locals)
 writeToDisk('index.html', jade.compileFile('src/index.jade', options), locals)
 
 
+////////////
+
+
 function writeToDisk(filename, fn, locals) {
-  fs.writeFileSync(filename, fn(locals));
+  fs.writeFile(filename, fn(locals), function(err, result) {
+    if (err) throw err;
+
+    console.log('-- *.html file has been saved');
+  });
 }
 
 function transformArrayToObject(data) {
+  console.log('-- transforming parsed *.yml');
   return Object.assign({}, data[0], data[1], data[2])
 }
 
 function parseYMLToJSON(payload) {
+  console.log('-- parsing %s', payload.join(', '));
   return payload.map(function(file) {
     try {
       return yaml.safeLoad(read(path.join(__dirname, '..', 'config/'), file));
@@ -47,6 +56,7 @@ function parseYMLToJSON(payload) {
 }
 
 function read(dir, file) {
+  console.log('-- reading %s', file);
   return fs.readFileSync(dir + file, {
     encoding: 'utf8',
     flag: 'r'

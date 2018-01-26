@@ -4,12 +4,14 @@
 # - To create an S3 bucket, run `aws s3 mb s3://mybucket`
 # - To initialize your S3 bucket as a website, run `aws s3 website $(S3_BUCKET) --index-document index.html`
 
+.PHONY: build clean
+
 S3_BUCKET=s3://resume.akinjide.me/
 MINIFY_PATH=./bin/minify
 COMPILE_PATH=./bin/compile
 
-all:
-	@echo Deploying...
+deploy: build
+	@echo -- Starting [deploy]
 	aws s3 sync . $(S3_BUCKET) \
 		--exclude 'static/scripts/*' \
 		--exclude 'bin/*' \
@@ -18,19 +20,23 @@ all:
 		--exclude '.git/*' \
 		--exclude 'Makefile' \
 		--acl public-read --delete
+	@echo -- Finished [deploy]
 
 develop:
-	@echo Starting...
-	if [ -d build ]; then echo "\n  >>> Directory given already exists...\n"; else mkdir build; fi
-
+	@echo -- Starting [develop]
+	if [ -d build ]; then echo "-- build directory existed"; else mkdir build; fi
 	node $(MINIFY_PATH) development
 	node $(COMPILE_PATH) development
+	@echo -- Finished [develop]
 
-build:
-	@echo Building app...
-	if [ -d build ]; then echo "\n  >>> Directory given already exists...\n"; else mkdir build; fi
-
+build: clean
+	@echo -- Starting [build]
+	if [ -d build ]; then echo "-- build directory existed"; else mkdir build; fi
 	node $(MINIFY_PATH) production
 	node $(COMPILE_PATH) production
+	@echo -- Finished [build]
 
-.PHONY: build
+clean:
+	@echo -- Starting [clean]
+	if [ -d build ]; then rm -rf build; rm *.html; echo "-- build directory deleted"; else mkdir build; fi
+	@echo -- Finished [clean]
