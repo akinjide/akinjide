@@ -217,7 +217,8 @@ resume:
       'Flask': 2
       'Express.js': 6
       'Angular.js': 5
-      'VIM': 4
+      'Vue.js': 4
+      'VIM': 3
       '/(No)?SQL/': 5
       'TDD': 4
 
