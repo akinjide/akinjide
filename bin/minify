@@ -46,7 +46,7 @@ minifier.on('error', function(e) {
   process.exit(1);
 });
 
-var bar = new ProgressBar('-- minifing [:bar] :percent :etas :current/:total', {
+var bar = new ProgressBar('-- minifing [:bar] :percent eta::etas left::current/:total', {
   complete: '█',
   incomplete: '░',
   width: process.stdout.columns,

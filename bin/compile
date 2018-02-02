@@ -35,7 +35,7 @@ function writeToDisk(filename, fn, locals) {
   fs.writeFile(filename, fn(locals), function(err, result) {
     if (err) throw err;
 
-    console.log('-- *.html file has been saved');
+    console.log('-- *.html file saved');
   });
 }
 

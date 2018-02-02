@@ -38,5 +38,5 @@ build: clean
 
 clean:
 	@echo -- Starting [clean]
-	if [ -d build ]; then rm -rf build; rm *.html; echo "-- build directory deleted"; else mkdir build; fi
+	if [ -d build ]; then rm -rf build; rm *.html; echo "-- build directory cleaned"; else mkdir build; fi
 	@echo -- Finished [clean]
