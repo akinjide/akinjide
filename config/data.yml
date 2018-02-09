@@ -71,6 +71,11 @@ books:
         - 1
         - 2
 
+    - name: 'Up And Going'
+      url: 'https://www.amazon.com/You-Dont-Know-JS-Going/dp/1491924462'
+      tags:
+        - 1
+
 portfolios:
   tags:
     - 'All'

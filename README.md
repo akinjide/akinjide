@@ -29,3 +29,7 @@ $ bin/serve
 $ make build
 $ make deploy
 ```
+
+
+## Note
+  - Adding books to `/static/books` directory, should match `name` in `data.yml`
