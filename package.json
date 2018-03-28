@@ -4,15 +4,23 @@
   "description": "",
   "main": "minifer.js",
   "dependencies": {
+    "chalk": "^2.3.1",
+    "gaze": "^1.1.2",
     "jade": "^1.11.0",
     "js-yaml": "^3.10.0",
     "minifier": "^0.8.0",
-    "progress": "^1.1.8"
+    "progress": "^1.1.8",
+    "semver": "^5.5.0",
+    "shelljs": "^0.8.1"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "make develop"
+  },
+  "engines": {
+    "node": ">= 6.13.0",
+    "npm": ">= 3.10.10"
   },
   "author": "Akinjide Bankole <r@akinjide.me>",
   "license": "ISC"

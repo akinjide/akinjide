@@ -36,17 +36,17 @@ body {
   padding: 10px 12px;
   vertical-align: middle;
   cursor: pointer;
-  background-color: #eee;
-  background-image: linear-gradient(#fcfcfc, #eee);
-  border: 1px solid #d5d5d5;
+  background-color: #EEEEEE;
+  background-image: linear-gradient(#FCFCFC, #EEEEEE);
+  border: 1px solid #D5D5D5;
   border-radius: 3px;
 }
 
 .snippet button:hover {
   text-decoration: none;
-  background-color: #ddd;
-  background-image: linear-gradient(#eee, #ddd);
-  border-color: #ccc
+  background-color: #DDDDDD;
+  background-image: linear-gradient(#EEEEEE, #DDDDDD);
+  border-color: #CCCCCC
 }
 
 img.clippy {
@@ -69,7 +69,7 @@ img.clippy {
   display: none;
   padding: 5px 8px;
   font: normal normal 11px / 1.5 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-  color: #fff;
+  color: #FFFFFF;
   text-align: center;
   text-decoration: none;
   text-shadow: none;
@@ -178,7 +178,7 @@ img.clippy {
 }
 
 .fullscreen-overlay-enabled.dark-theme .tooltipped:after {
-  color: #000;
+  color: #000000;
   background: rgba(255, 255, 255, 0.8)
 }
 
@@ -219,10 +219,11 @@ img.clippy {
 .loader.is-loading {
   display: block;
   position: absolute;
-  width: 34px;
-  height: 34px;
+  width: 60px;
+  height: 60px;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
   background-image: url('../images/loader.png');
   background-size: 1600%;
   background-repeat: no-repeat;
@@ -306,7 +307,7 @@ img.clippy {
   background: #F6F6F6;
   padding: 8px 10px;
   border: 1px solid #E2E2E2;
-  box-shadow: 0 3px 2px -2px rgba(200,200,200,0.3);
+  box-shadow: 0 3px 2px -2px rgba(200, 200, 200, 0.3);
   border-radius: 3px;
   text-align: center;
   -webkit-font-smoothing: antialiased;
@@ -315,9 +316,15 @@ img.clippy {
 .error-banner > div#error-message a#error-hide,
 .error-banner > div#error-message a#error-refresh {
   color: #2B6DAD;
-  text-decoration: underline;
+  text-decoration: none;
   font-weight: bolder;
 }
+
+.error-banner > div#error-message a#error-hide:hover,
+.error-banner > div#error-message a#error-refresh:hover {
+  text-decoration: underline;
+}
+
 
 /*
  * Font Face styling.
@@ -342,7 +349,7 @@ img.clippy {
 }
 
 #content {
-  background-color: #FFF;
+  background-color: #FFFFFF;
   border-radius: 4px;
 /*
   -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
@@ -389,7 +396,7 @@ img.clippy {
   font-size: 20px;
   padding: 24px 0;
   border-bottom: 1px solid #EDEDED;
-  color: #999;
+  color: #999999;
   margin-bottom:20px;
   font-weight: 300;
 }
@@ -537,14 +544,14 @@ header {
 .socialicons li a,
 .socialicons .socials-text {
   background: #2E3D49;
-  color: #FFF;
+  color: #FFFFFF;
 }
 
 /*
  * Profile Section styling.
  */
 #profile {
-  background: #FFF url(../images/header-shadow.png) repeat-x center bottom;
+  background: #FFFFFF url(../images/header-shadow.png) repeat-x center bottom;
   overflow: hidden;
   border-radius: 4px 4px 0 0;
 }
@@ -569,7 +576,7 @@ header {
 }
 
 .about .photo-inner img {
-  background: #FFF;
+  background: #FFFFFF;
 }
 
 .about h1 {
@@ -687,11 +694,11 @@ header {
 .prev {
   font-family: 'icomoon';
   font-size: 34px;
-  color: #EEE;
+  color: #EEEEEE;
   position: absolute;
   top: 30px;
   width: 40px;
-  background: #CCC;
+  background: #CCCCCC;
   text-align: center;
   cursor: pointer;
 }
@@ -740,7 +747,7 @@ header {
 .timeline li .timelineUnit {
   line-height: 17px;
   margin-left: 0px;
-  color: #444;
+  color: #444444;
   font-size: 13px;
   border-left: 1px solid #FDC750;
   padding-left: 15px;
@@ -748,7 +755,7 @@ header {
 
 .timeline li .timelineUnit .timelineDate {
   line-height: 17px;
-  color: #8394a9;
+  color: #8394A9;
   font-size: 14px;
   margin-left: 10px;
   font-weight: normal;
@@ -759,19 +766,19 @@ header {
 .timeline li .timelineUnit h4 {
   line-height: 24px;
   font-size: 15px;
-  color: #444;
+  color: #444444;
 }
 
 .timeline li .timelineUnit h5 {
   line-height: 18px;
   font-size: 13px;
-  color: #999;
+  color: #999999;
 }
 
 .timeline li .timelineUnit p {
   margin-top: 5px;
   font-size: 12px;
-  color: #666;
+  color: #666666;
 }
 
 .timeline li .timelineUnit p a {
@@ -891,7 +898,7 @@ header {
   display: block;
   float: left;
   margin-right: 1px;
-  border: 2px solid #eeeeee;
+  border: 2px solid #EEEEEE;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 20px;
@@ -957,7 +964,7 @@ header {
 }
 
 #portfolio-list img {
-  background: #FFF;
+  background: #FFFFFF;
   height: 120px;
   width: 180px;
   -webkit-transition: all .1s ease-in-out;
@@ -978,7 +985,7 @@ header {
 #portfolio-list li .categorie {
   font-size: 11px;
   line-height: 25px;
-  color: #999;
+  color: #999999;
 }
 
 /*
@@ -1016,7 +1023,7 @@ header {
 }
 
 #book-list img {
-  background: #FFF;
+  background: #FFFFFF;
   height: 120px;
   width: 130px;
   -webkit-transition: all .1s ease-in-out;
@@ -1038,7 +1045,7 @@ header {
 #book-list li .categorie {
   font-size: 11px;
   line-height: 25px;
-  color: #999;
+  color: #999999;
 }
 
 /*
@@ -1053,7 +1060,7 @@ header {
 .cats-filter li a {
   float: left;
   margin-right: 7px;
-  color: #666;
+  color: #666666;
   background: #EDEDED;
   padding: 6px;
   margin-bottom: 5px;
@@ -1061,11 +1068,11 @@ header {
 
 .cats-filter li a:hover {
   background: #5C697D;
-  color: #FFF;
+  color: #FFFFFF;
 }
 .cats-filter li a.current {
   background: #5C697D;
-  color: #FFF;
+  color: #FFFFFF;
 }
 
 /*
@@ -1162,7 +1169,7 @@ header {
   position: absolute;
   top: 5px;
   left: 0px;
-  background: #666;
+  background: #666666;
 }
 
 .blog-entry .entry-date .day {
@@ -1170,9 +1177,9 @@ header {
   font-weight: bold;
   display: block;
   float: left;
-  border-right: 1px solid #FFF;
+  border-right: 1px solid #FFFFFF;
   padding-right: 10px;
-  color: #FFF;
+  color: #FFFFFF;
 }
 
 .blog-entry .entry-date .month-year {
@@ -1183,14 +1190,14 @@ header {
   line-height: 15px;
   text-align: center;
   float: left;
-  color: #FFF;
+  color: #FFFFFF;
   margin: 0;
 }
 
 .blog-entry p {
   padding:0px 15px;
   font-size: 12px;
-  color: #666;
+  color: #666666;
   line-height: 20px;
   margin-bottom: 15px;
 }
@@ -1209,7 +1216,7 @@ header {
    */
 .blog-single {
   position: relative;
-  background: #FFF;
+  background: #FFFFFF;
 }
 
 .blog-single h3,
@@ -1294,7 +1301,7 @@ header {
   font-weight: 300;
   line-height: 20px;
   margin: 10px 0px 0px -20px;
-  color: #f7f7f7;
+  color: #F7F7F7;
   display: block;
   text-align: center;
   -webkit-border-radius: 0px 4px 4px 0px;
@@ -1348,7 +1355,7 @@ header {
 
 .popular-posts-widget li span {
   font-size: 11px;
-  color: #999;
+  color: #999999;
 }
 
 
@@ -1392,10 +1399,10 @@ header {
    */
 .blog-single-close {
   float: right;
-  color: #FFF;
+  color: #FFFFFF;
   font-weight: 300;
   font-size: 14px;
-  color: #DDD;
+  color: #DDDDDD;
 }
 
 .blog-single-close i {
@@ -1424,7 +1431,7 @@ header {
   overflow: hidden;
 }
 
-#contact a[title="Akinjide PGP Public Key"].button {
+#contact a#pgp-key.button {
   margin-left: -20px;
   -webkit-border-radius: 0px 4px 4px 0px;
   -moz-border-radius: 0px 4px 4px 0px;
@@ -1469,8 +1476,8 @@ header {
   height: 300px;
   margin-bottom: 25px;
   width: 100%;
-  border-bottom: 1px solid #CCC;
-  border-top: 1px solid #CCC;
+  border-bottom: 1px solid #CCCCCC;
+  border-top: 1px solid #CCCCCC;
 }
 
 /*
@@ -1478,15 +1485,15 @@ header {
  */
 form .input,
 form textarea {
-  -moz-box-shadow: inset 0 5px 16px -13px #333;
-  -webkit-box-shadow: inset 0 5px 16px -13px #333;
-  box-shadow: inset 0 5px 16px -13px #333;
+  -moz-box-shadow: inset 0 5px 16px -13px #333333;
+  -webkit-box-shadow: inset 0 5px 16px -13px #333333;
+  box-shadow: inset 0 5px 16px -13px #333333;
   background: #FDFDFD;
-  border: 1px solid #d9d9d9;
+  border: 1px solid #D9D9D9;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-  color: #666;
+  color: #666666;
   font-size: 12px;
   height: 30px;
   outline: none;
@@ -1503,7 +1510,7 @@ form textarea {
 }
 
 form p {
-  margin-bottom:15px;
+  margin-bottom: 15px;
 }
 
 form p label {
@@ -1567,7 +1574,7 @@ form p label[for="remember"]:hover {
 }
 
 .button {
-  color: #666;
+  color: #666666;
   background: #EDEDED;
   padding: 8px;
   border: none;
@@ -1616,7 +1623,7 @@ footer {
 div.footer .copyright,
 footer .copyright {
   float: left;
-  color: #333;
+  color: #333333;
   padding-left: 6px;
 }
 
@@ -1626,10 +1633,10 @@ footer .copyright {
 #legal-notice {
   font-size: 10pt;
   color: #FFFFFF;
-  background-color: rgba(0,0,0,0.70);
+  background-color: rgba(0, 0, 0, 0.70);
   padding: 15px 0;
   border-color: #E7E7E7;
-  box-shadow: 0 0 3px #666;
+  box-shadow: 0 0 3px #666666;
   position: fixed;
   bottom: 0;
   right: 0;
@@ -1845,12 +1852,12 @@ a.legal-notice-close:hover {
   #logo h2 {
     font-size: 25px;
     font-weight: 900;
-    color: #444;
+    color: #444444;
     line-height: 30px;
   }
 
   #logo h4 {
-    color: #666;
+    color: #666666;
     line-height: 15px;
   }
 
@@ -1888,7 +1895,7 @@ a.legal-notice-close:hover {
     display: block;
     width: 420px;
     background: none;
-    border-top: 1px solid #fdc750;
+    border-top: 1px solid #FDC750;
   }
 
   .personal-info li span {
@@ -2030,12 +2037,12 @@ a.legal-notice-close:hover {
   #logo h2 {
     font-size: 25px;
     font-weight: 900;
-    color: #444;
+    color: #444444;
     line-height: 30px;
   }
 
   #logo h4 {
-    color: #666;
+    color: #666666;
     line-height: 15px;
   }
 
@@ -2088,7 +2095,7 @@ a.legal-notice-close:hover {
     display: block;
     width: 280px;
     background: none;
-    border-top: 1px solid #fdc750;
+    border-top: 1px solid #FDC750;
     margin-left: 10px;
     min-height: 220px;
     padding-left: 0;

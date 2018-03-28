@@ -7,7 +7,6 @@
 .PHONY: build clean
 
 S3_BUCKET=s3://resume.akinjide.me/
-MINIFY_PATH=./bin/minify
 COMPILE_PATH=./bin/compile
 
 deploy: build
@@ -25,14 +24,12 @@ deploy: build
 develop:
 	@echo -- Starting [develop]
 	if [ -d build ]; then echo "-- build directory existed"; else mkdir build; fi
-	node $(MINIFY_PATH) development
 	node $(COMPILE_PATH) development
 	@echo -- Finished [develop]
 
 build: clean
 	@echo -- Starting [build]
 	if [ -d build ]; then echo "-- build directory existed"; else mkdir build; fi
-	node $(MINIFY_PATH) production
 	node $(COMPILE_PATH) production
 	@echo -- Finished [build]
 

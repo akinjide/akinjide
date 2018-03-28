@@ -71,8 +71,13 @@ books:
         - 1
         - 2
 
-    - name: 'Up And Going'
+    - name: 'You Dont know JS (Up And Going)'
       url: 'https://www.amazon.com/You-Dont-Know-JS-Going/dp/1491924462'
+      tags:
+        - 1
+
+    - name: 'You Dont know JS (Scope And Closure)'
+      url: 'https://www.amazon.com/You-Dont-Know-JS-Closures/dp/1449335586'
       tags:
         - 1
 
@@ -139,6 +144,14 @@ resume:
         At Scotch, I write posts about various technologies in the world
         of software development and programming.
 
+    - role: 'Backend Engineer'
+      company: 'Atlas Money'
+      timeline: 'May 2016 - Present'
+      description: >
+        As a backend engineer, I use Node.js and several technologies (e.g. PostgreSQL,
+        MongoDB and ElasticSearch) to solve business requirements facing mobile
+        banking, but sometimes work with Vue.js and Angular.js projects.
+
     - role: 'Programmer'
       company: 'Andela'
       timeline: 'May 2015 - Present'
@@ -173,6 +186,33 @@ resume:
         also graduated from this great school.
 
   openSource:
+    - title: 'size'
+      timeline: 'Jun 2017'
+      language: 'Node.js, JavaScript'
+      description: >
+        Black market currency rate instantly in your terminal.
+        <br>
+        <br>
+        <a href="https://github.com/akinjide/size" target="_blank">https://github.com/akinjide/size</a>
+
+    - title: 'aboki-node'
+      timeline: 'May 2017'
+      language: 'Node.js, JavaScript'
+      description: >
+        Black market currency rate instantly in your terminal.
+        <br>
+        <br>
+        <a href="https://github.com/akinjide/aboki-node" target="_blank">https://github.com/akinjide/aboki-node</a>
+
+    - title: 'aboki'
+      timeline: 'Apr 2017'
+      language: 'Python'
+      description: >
+        Black market currency rate instantly in your terminal.
+        <br>
+        <br>
+        <a href="https://github.com/akinjide/aboki" target="_blank">https://github.com/akinjide/aboki</a>
+
     - title: 'tw-syntax'
       timeline: 'Feb 2017'
       language: 'TextWrangler, BBEdit'
@@ -184,7 +224,7 @@ resume:
 
     - title: 'cookiet'
       timeline: 'Jun 2016'
-      language: 'Javascript'
+      language: 'JavaScript'
       description: >
         A small, simple JavaScript cookies library.
         <br>
@@ -193,7 +233,7 @@ resume:
 
     - title: 'squash'
       timeline: 'Jun 2016'
-      language: 'Javascript, CSS, Node.js'
+      language: 'JavaScript, CSS, Node.js'
       description: >
         A simple utility tool, that minifies my CSS and JS.
         <br>
@@ -231,7 +271,7 @@ resume:
       'CSS': 6
       'HTML': 7
       'Pug': 7
-      'Javascript': 5
+      'JavaScript': 5
       'JQuery': 6
       'Photoshop': 3
       'illustrator': 3

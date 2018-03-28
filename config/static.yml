@@ -1,0 +1,27 @@
+jsIndex:
+  - 'static/scripts/lib/jquery.easytabs.min.js'
+  - 'static/scripts/lib/respond.min.js'
+  - 'static/scripts/lib/jquery.prettyPhoto.js'
+  - 'static/scripts/lib/jquery.isotope.min.js'
+  - 'static/scripts/lib/jquery-ui-map.js'
+  - 'static/scripts/lib/jquery.carouFredSel.js'
+  - 'static/scripts/lib/plugins.js'
+  - 'static/scripts/lib/jquery.validate.min.js'
+  - 'static/scripts/lib/js.cookie-2.1.2.min.js'
+  - 'static/scripts/lib/clipboard.min.js'
+  - 'static/scripts/lib/html2canvas.min.js'
+  - 'static/scripts/lib/vfs_fonts.js'
+  - 'static/scripts/lib/pdfmake.min.js'
+  - 'static/scripts/script.js'
+
+jsError:
+  - 'static/scripts/lib/typed.min.js'
+  - 'static/scripts/404.js'
+
+cssIndex:
+  - 'static/styles/reset.css'
+  - 'static/styles/style.css'
+  - 'static/styles/prettyPhoto.css'
+
+cssError:
+  - 'static/styles/404.css'
