@@ -1,64 +1,242 @@
 #!/usr/bin/env node
 
-var jade = require('jade');
-var yaml = require('js-yaml');
-var fs = require('fs');
-var path = require('path');
-var args = process.argv;
+var path = require('path')
 
-var isEnabled = args[2] == 'development';
-var options = {
-  pretty: isEnabled,
-  self: true,
-  debug: isEnabled,
-  compileDebug: isEnabled,
-  cache: isEnabled
-};
+require(resolve('lib') + '/check-versions')()
 
-var YMLs = [
-  'config.yml',
-  'data.yml',
-  'sjc.yml'
-];
+var minifier = require('minifier')
+var ProgressBar = require('progress')
+var yaml = require('js-yaml')
+var jade = require('jade')
+var gaze = require('gaze')
+var fs = require('fs')
+var spawn = require('child_process').spawn
+var environment = process.argv[2] || 'development'
+var isDevelopment = environment == 'development'
+var files = yaml.safeLoad(read(resolve('config') + '/', 'static.yml'))
+var filesF = Object.keys(files).length
+var configurations = {}
 
-// Compile the source code
-var locals = transformArrayToObject(parseYMLToJSON(YMLs));
+if (!filesF) return
 
-writeToDisk('404.html', jade.compileFile('src/404.jade', options), locals)
-writeToDisk('index.html', jade.compileFile('src/index.jade', options), locals)
+minifier.on('error', function(e) {
+  console.log('-- minifier error', e)
+  process.exit(1)
+})
 
+function minify(isDev, fn, cb) {
+  console.log('-- using %s', environment)
 
-////////////
+  var suffix = {
+    css: '.min.css',
+    js: isDev ? '.dev.js' : '.min.js'
+  }
+  var options = {
+    uglify: {
+      output: {
+        beautify: true,
+        bracketize: true,
+        indent_level: 2,
+        width: 100,
+        comments: true,
+        wrap_iife: true,
+        max_line_len: 320000
+      },
+      compressor: {},
+      mangle: false
+    }
+  }
 
+  var bar = new ProgressBar('-- minifing objects:  :percent (:current/:total), :etas ETA/s [:title]', {
+    complete: '█',
+    incomplete: '░',
+    width: Math.floor(process.stdout.columns / 4),
+    total: filesF
+  })
 
-function writeToDisk(filename, fn, locals) {
-  fs.writeFile(filename, fn(locals), function(err, result) {
-    if (err) throw err;
+  configurations['css'] = {
+    index: squashed() + suffix.css,
+    four0four: squashed() + suffix.css
+  }
 
-    console.log('-- *.html file saved');
-  });
+  configurations['javascript'] = {
+    index: squashed() + suffix.js,
+    four0four: squashed() + suffix.js
+  }
+
+  for (var prop in files) {
+    bar.tick({ title: 'Hello. World' })
+    var useConf = ''
+
+    switch(prop) {
+      case 'cssIndex':
+        useConf = configurations.css.index
+        break
+      case 'cssError':
+        useConf = configurations.css.four0four
+        break
+      case 'jsIndex':
+        useConf = configurations.javascript.index
+        break
+      case 'jsError':
+        useConf = configurations.javascript.four0four
+        break
+    }
+
+    munch(files[prop], useConf, isDev ? options : {})
+  }
+
+  if (bar.complete) {
+    writeYMLToDisk('config/sjc.yml', dumpObjectToYML(configurations), function() {
+      console.log('-- minification complete')
+      fn(isDev, cb)
+    })
+  }
 }
 
-function transformArrayToObject(data) {
-  console.log('-- transforming parsed *.yml');
-  return Object.assign({}, data[0], data[1], data[2])
+function compile(isEnabled, cb) {
+  var options = {
+    pretty: isEnabled,
+    self: true,
+    debug: isEnabled,
+    compileDebug: isEnabled,
+    cache: isEnabled,
+    globals: []
+  }
+
+  var YMLs = [
+    'config.yml',
+    'data.yml',
+    'sjc.yml'
+  ]
+
+  // Compile the source code
+  var locals = transformArrayToObject(parseYMLToJSON(YMLs))
+
+  writeHTMLToDisk('404.html', jade.compileFile('src/404.jade', options), locals)
+  writeHTMLToDisk('index.html', jade.compileFile('src/index.jade', options), locals)
+  cb(null, 'done')
+}
+
+function build(isDev, cb) {
+  minify(isDev, compile, cb)
+}
+
+
+build(isDevelopment, function(err, done) {
+  console.log('-- %s [%s]', done, new Date())
+
+  if (isDevelopment && (process.argv[3] == '-w' || process.argv[3] == '--watch')) {
+    gaze([
+      resolve('static') + '/**/*',
+      resolve('src') + '/**/*'
+    ], function(err, watcher) {
+      console.log('-- watching %s directories', Object.keys(this.watched()).length)
+
+      this.add([
+        resolve('config') + '/**/(config|data|static)\.yml$'
+      ])
+
+      this.on('all', function(event, filepath) {
+        console.log(event, filepath)
+        build(isDevelopment, function(err, done) {
+          console.log('-- Regenerated site [%s]', new Date())
+        })
+      })
+    })
+  }
+
+  if (process.argv[3] == '-s' || process.argv[3] == "--serve") {
+    var uri = 'http://localhost:1334'
+    var py = spawn('python', ['lib/serve'])
+
+    py.stdout.on('data', function(data) { console.log('-- stdout: %s', data) })
+    py.stderr.on('data', function(data) { console.log('-- stderr: %s', data) })
+    py.on('close', function(code) {
+      console.log('-- close: %s', code)
+      process.exit(code)
+    })
+
+    console.log('-- listening %s', uri)
+  }
+})
+
+
+///////////////////////
+
+
+function munch(filetype, filename, options) {
+  var payload = {
+    output: 'build/' + filename,
+    noComments: true
+  }
+
+  if (options && Object.keys(options).length) Object.assign(payload, options)
+  minifier.minify(filetype, payload)
+}
+
+function writeYMLToDisk(filename, payload, cb) {
+  fs.writeFile(filename, payload, function(err, result) {
+    if (err) throw err
+
+    console.log('-- *.yml file has been saved')
+    cb()
+  })
+}
+
+function writeHTMLToDisk(filename, fn, locals) {
+  fs.writeFile(filename, fn(locals), function(err, result) {
+    if (err) throw err
+
+    console.log('-- *.html file saved')
+  })
+}
+
+function dumpObjectToYML(payload) {
+  return yaml.safeDump(payload, { 'sortKeys' : true })
+}
+
+function resolve(dir) {
+  return path.join(__dirname, '..', dir)
+}
+
+function squashed() {
+  var iterator = 0
+  var result = []
+  var comb = (
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqurstuwxyz' +
+    '1234567890' +
+    '_-'
+  ).split('')
+  var squashed = ''
+
+  for (iterator; iterator < 6; iterator++) {
+    result.push(comb[Math.floor(Math.random() * comb.length - iterator) + iterator])
+  }
+
+  return result.join('')
 }
 
 function parseYMLToJSON(payload) {
-  console.log('-- parsing %s', payload.join(', '));
+  console.log('-- parsing %s', payload.join(', '))
   return payload.map(function(file) {
     try {
-      return yaml.safeLoad(read(path.join(__dirname, '..', 'config/'), file));
+      return yaml.safeLoad(read(path.join(__dirname, '..', 'config/'), file))
     } catch (e) {
       throw e
     }
-  });
+  })
 }
 
 function read(dir, file) {
-  console.log('-- reading %s', file);
+  console.log('-- reading %s', file)
   return fs.readFileSync(dir + file, {
     encoding: 'utf8',
     flag: 'r'
-  });
+  })
+}
+
+function transformArrayToObject(data) {
+  console.log('-- transforming parsed *.yml')
+  return Object.assign({}, data[0], data[1], data[2])
 }

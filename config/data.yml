@@ -7,13 +7,11 @@ navMap:
 
 social:
   links:
-    - 'https://facebook.com/bakinjide'
     - 'https://twitter.com/_akinjide'
     - 'https://www.akinjide.me'
     - 'https://github.com/akinjide'
 
   icons:
-    - '&#x2a;'
     - '&#x2c;'
     - '&#x31;'
     - '&#x33;'
