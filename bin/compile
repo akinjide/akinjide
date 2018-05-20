@@ -32,18 +32,32 @@ function minify(isDev, fn, cb) {
     js: isDev ? '.dev.js' : '.min.js'
   }
   var options = {
-    uglify: {
-      output: {
-        beautify: true,
-        bracketize: true,
-        indent_level: 2,
-        width: 100,
-        comments: true,
-        wrap_iife: true,
-        max_line_len: 320000
-      },
-      compressor: {},
-      mangle: false
+    production: {
+      uglify: {
+        output: {
+          beautify: false,
+          bracketize: true,
+          wrap_iife: true,
+          max_line_len: 320000
+        },
+        compressor: {},
+        mangle: false
+      }
+    },
+    development: {
+      uglify: {
+        output: {
+          beautify: true,
+          bracketize: true,
+          indent_level: 2,
+          width: 100,
+          comments: true,
+          wrap_iife: true,
+          max_line_len: 320000
+        },
+        compressor: {},
+        mangle: false
+      }
     }
   }
 
@@ -65,7 +79,7 @@ function minify(isDev, fn, cb) {
   }
 
   for (var prop in files) {
-    bar.tick({ title: 'Hello. World' })
+    bar.tick({ title: bar.curr })
     var useConf = ''
 
     switch(prop) {
@@ -83,7 +97,19 @@ function minify(isDev, fn, cb) {
         break
     }
 
-    munch(files[prop], useConf, isDev ? options : {})
+    munch(files[prop], useConf, (function (prop) {
+      if (['jsIndex', 'jsError'].includes(prop)) {
+        if (isDev) {
+          return options.development;
+        }
+
+        if (!isDev) {
+          return options.production;
+        }
+      }
+
+      return {};
+    }(prop)))
   }
 
   if (bar.complete) {
@@ -148,11 +174,11 @@ build(isDevelopment, function(err, done) {
 
   if (process.argv[3] == '-s' || process.argv[3] == "--serve") {
     var uri = 'http://localhost:1334'
-    var py = spawn('python', ['lib/serve'])
+    var server = spawn('lib/serve')
 
-    py.stdout.on('data', function(data) { console.log('-- stdout: %s', data) })
-    py.stderr.on('data', function(data) { console.log('-- stderr: %s', data) })
-    py.on('close', function(code) {
+    server.stdout.on('data', function(data) { console.log('-- stdout: %s', data) })
+    server.stderr.on('data', function(data) { console.log('-- stderr: %s', data) })
+    server.on('close', function(code) {
       console.log('-- close: %s', code)
       process.exit(code)
     })
