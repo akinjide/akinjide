@@ -23,7 +23,7 @@ Configure `config/*.yml` files to suite you need.
 ```bash
 # Generate Development-only files and run locally.
 $ make develop
-$ bin/serve
+$ lib/serve
 
 # Generate Production-only files and deploy to host.
 $ make build

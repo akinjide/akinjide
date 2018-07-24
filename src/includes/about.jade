@@ -7,4 +7,4 @@ header
     li.socials-text Social Profiles
     each url, index in self.social.links
       li
-        a.transition&attributes({ href: url })!= self.social.icons[index]
+        a.transition&attributes({ href: url, title: self.social.titles[index] })!= self.social.icons[index]
