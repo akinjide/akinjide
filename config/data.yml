@@ -1,20 +1,24 @@
 navMap:
   profile: '&#x43;'
   resume: '&#x3a;'
-  portfolio: '&#x38;'
   book: '&#x59;'
   contact: '&#x21;'
 
 social:
   links:
-    - 'https://twitter.com/_akinjide'
     - 'https://www.akinjide.me'
     - 'https://github.com/akinjide'
+    - 'https://www.linkedin.com/in/akinjide'
 
   icons:
-    - '&#x2c;'
     - '&#x31;'
     - '&#x33;'
+    - '&#x60;'
+
+  titles:
+    - 'Blog'
+    - 'Github'
+    - 'LinkedIn'
 
 books:
   tags:
@@ -79,46 +83,6 @@ books:
       tags:
         - 1
 
-portfolios:
-  tags:
-    - 'All'
-    - 'Webdesign'
-    - 'Photoghraphy'
-    - 'Illustration'
-    - 'Print'
-    - 'Animation'
-    - 'Terminal'
-    - 'Opensource'
-
-  works:
-    - name: 'Akinjide www'
-      image_src: '6.jpg'
-      thumb_src: '6-thumb.jpg'
-      tags:
-        - 1
-        - 4
-
-    - name: 'Medlenna'
-      image_src: '2.png'
-      thumb_src: '2-thumb.png'
-      tags:
-        - 1
-        - 5
-
-    - name: 'Aboki'
-      image_src: '3.jpg'
-      thumb_src: '3-thumb.jpg'
-      tags:
-        - 6
-        - 7
-
-    - name: 'Ufus'
-      image_src: '4.jpg'
-      thumb_src: '4-thumb.jpg'
-      tags:
-        - 1
-        - 7
-
 legal:  >
   This website uses cookies to customize your experience,
   and deliver personalized content,
@@ -127,6 +91,36 @@ legal:  >
 
 resume:
   employment:
+    - role: 'Software Architect'
+      company: 'Andela'
+      timeline: 'May 2018 - Present'
+      description: >
+        As an architect, I analyse and design system architecture for software products,
+        create technology roadmaps highlighting milestones.
+
+    - role: 'Technical Team Lead'
+      company: 'Atlas Money'
+      timeline: 'Feb 2018 - Jun 2018'
+      description: >
+        As a TTL, I shifted fractionally from debugging the software we are building,
+        to debugging the team by identifying and clearing roadblocks, managing technical
+        debt effectively to ensure it does not accumulate and broaden the technical
+        capabilities of the team by delegating problems of increasing complexity,
+        pair programming frequently to promote engineering practices and provide
+        technical guidance.
+
+    - role: 'Technical Team Lead'
+      company: 'Andela'
+      timeline: 'Sept 2017 - May 2018'
+      description: >
+        As a TTL, I lead Andela's Partner team responsible for building and scalabling
+        software products and tools necessary for operating and scaling the business
+        effectively. Drafting and deploying new strategies to effectively build and
+        manage a high velocity and performing engineering team. Lead estimation and
+        assessment of feasibility of solutions/features to be implemented on designed
+        products. Interfacing and liaising with teammates to ensure product’s development
+        and personal growth, and better team dynamics.
+
     - role: 'Mentor'
       company: 'Codementor'
       timeline: 'Feb 2017 - Present'
@@ -142,23 +136,48 @@ resume:
         At Scotch, I write posts about various technologies in the world
         of software development and programming.
 
+    - role: 'Consultant'
+      company: 'Andela'
+      timeline: 'Oct 2016 - Sept 2017'
+      description: >
+        As a Consultant, I collaborate with software architects and engineers to
+        plan, design, develop, test, deploy and maintain software applications, while
+        proactively influencing software best practices, standards, and policies
+        within Andela's Partner team and interfacing with stakeholders including Product Owner;
+        Project Managers, to understand user requirements and extract technical requirements.
+
     - role: 'Backend Engineer'
       company: 'Atlas Money'
-      timeline: 'May 2016 - Present'
+      timeline: 'Mar 2016 - Jun 2018'
       description: >
-        As a backend engineer, I use Node.js and several technologies (e.g. PostgreSQL,
-        MongoDB and ElasticSearch) to solve business requirements facing mobile
-        banking, but sometimes work with Vue.js and Angular.js projects.
+        As a backend engineer, I collaborate with other engineers to build, develop,
+        test and maintain scalable Microservices using (but not limited to) Node.js
+        and several technologies (e.g. PostgreSQL, MongoDB and ElasticSearch, Vue.js,
+        Angular.js, Kafka) to solve business requirements facing mobile  banking.
+
+    - role: 'Junior Developer'
+      company: 'Andela'
+      timeline: 'Dec 2015 - Oct 2016'
+      description: >
+        As a Junior Developer, I constantly gain skills and experience needed to
+        thrive by working with a broad range technologies, build cool stuffs in Python,
+        Node.js -- as well as various web frameworks. I also attend meetups, give talks
+        on programming, design and related topics, and actively contribute to the open
+        source community.
 
     - role: 'Programmer'
       company: 'Andela'
       timeline: 'May 2015 - Present'
       description: >
-        As a Programmer, I constantly work with a
-        broad range technologies, build cool stuffs in Python,
-        Node.js -- as well as various web frameworks. I
-        also attend meetups, give talks on programming, design and
-        related topics, and actively contribute to the open source community.
+        Andela is a technology company that helps companies build high performing
+        distributed engineering teams by investing in Africa’s most talented software
+        developers, with centres in Lagos, Kampala, Nairobi, San Francisco and New York City.
+        <br>
+        <br>
+        At Andela, with an acceptance rate below 1%, we believe brilliance is evenly
+        distributed. I am exposed to working with partners like Udacity and Atlas,
+        without limitations to one type of technological stack. More information about
+        my roles at these companies can be found above.
 
     - role: 'Editor'
       company: 'FashionPolice'
@@ -169,7 +188,7 @@ resume:
 
   education:
     - where: 'Self Taught'
-      timeline: '2014'
+      timeline: '2014 - Present'
       level: 'Life'
       description: >
         I'm primarily self-taught. I've been designing since
@@ -183,10 +202,28 @@ resume:
         I was a science student, a member of Jet club back at school and
         also graduated from this great school.
 
-  openSource:
+  portfolios:
+    - title: 'ufus-extension'
+      timeline: 'Jul 2018'
+      language: 'Node.js, JavaScript, CSS, Chrome, Open source'
+      description: >
+        Ufus browser extension.
+        <br>
+        <br>
+        <a href="https://github.com/akinjide/ufus-extension" target="_blank">https://github.com/akinjide/ufus-extension</a>
+
+    - title: 'is'
+      timeline: 'Feb 2018'
+      language: 'Node.js, JavaScript, Open source'
+      description: >
+        IS a type checking for JavaScript.
+        <br>
+        <br>
+        <a href="https://github.com/akinjide/is" target="_blank">https://github.com/akinjide/is</a>
+
     - title: 'size'
       timeline: 'Jun 2017'
-      language: 'Node.js, JavaScript'
+      language: 'Node.js, JavaScript, Open source'
       description: >
         Black market currency rate instantly in your terminal.
         <br>
@@ -195,7 +232,7 @@ resume:
 
     - title: 'aboki-node'
       timeline: 'May 2017'
-      language: 'Node.js, JavaScript'
+      language: 'Node.js, JavaScript, Open source'
       description: >
         Black market currency rate instantly in your terminal.
         <br>
@@ -204,7 +241,7 @@ resume:
 
     - title: 'aboki'
       timeline: 'Apr 2017'
-      language: 'Python'
+      language: 'Python, Open Source'
       description: >
         Black market currency rate instantly in your terminal.
         <br>
@@ -213,30 +250,30 @@ resume:
 
     - title: 'tw-syntax'
       timeline: 'Feb 2017'
-      language: 'TextWrangler, BBEdit'
+      language: 'TextWrangler, BBEdit, Open source'
       description: >
         BBEdit/TextWrangler Language Module and Syntax highlighting.
         <br>
         <br>
         <a href="https://github.com/akinjide/tw-syntax" target="_blank">https://github.com/akinjide/tw-syntax</a>
 
+    - title: 'aproxy'
+      timeline: 'Dec 2016'
+      language: 'JavaScript, Node.js, Open source'
+      description: >
+        Renders PDF using phantom.js and Node.js.
+        <br>
+        <br>
+        <a href="https://github.com/akinjide/aproxy" target="_blank">https://github.com/akinjide/aproxy</a>
+
     - title: 'cookiet'
       timeline: 'Jun 2016'
-      language: 'JavaScript'
+      language: 'JavaScript, Open source'
       description: >
         A small, simple JavaScript cookies library.
         <br>
         <br>
         <a href="https://github.com/akinjide/cookiet" target="_blank">https://github.com/akinjide/cookiet</a>
-
-    - title: 'squash'
-      timeline: 'Jun 2016'
-      language: 'JavaScript, CSS, Node.js'
-      description: >
-        A simple utility tool, that minifies my CSS and JS.
-        <br>
-        <br>
-        <a href="https://github.com/akinjide/squash" target="_blank">https://github.com/akinjide/squash</a>
 
   communityContrib:
     - role: 'Admin'
@@ -254,9 +291,9 @@ resume:
     programming:
       'Python': 4
       'Node.js': 6
-      'Go': 1
+      'GoLang': 2
       'Ruby': 3
-      'Swift / iOS': 1
+      'Swift / iOS': 2
       'Flask': 2
       'Express.js': 6
       'Angular.js': 5
@@ -264,6 +301,7 @@ resume:
       'VIM': 3
       '/(No)?SQL/': 5
       'TDD': 4
+      'Git / Github': 5
 
     design:
       'CSS': 6

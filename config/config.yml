@@ -18,7 +18,7 @@ params:
   lastName: 'Bankole'
   city: 'Yaba, Lagos'
   keyFingerprint: 'BB99 7052 37A0 284F D945  CEDB E418 77A3 EA43 D3E1'
-  resumeURL: 'https://aproxy.herokuapp.com?format=pdf&filename=resume&url=https://resume.akinjide.me/#resume'
+  resumeURL: 'https://aproxy.herokuapp.com?format=pdf&filename=resume&delay=10000&url=https://resume.akinjide.me/%23resume'
 
 keys:
   googleMaps: 'AIzaSyBm7BjffwF38_EX_1mrNgwSPLd6aA5TKeY'

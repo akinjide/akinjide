@@ -10,7 +10,7 @@ section#resume
             h4 #{job['role']}
               span.timelineDate= job['timeline']
             h5 #{job['company']}
-            p #{job['description']}
+            p !{job['description']}
 
       div.clear
 
@@ -27,16 +27,16 @@ section#resume
 
       div.clear
 
-    h3.main-heading Open Source
+    h3.main-heading Portfolio
     ul.timeline
 
-      each open_source in self.resume.openSource
+      each portfolio in self.resume.portfolios
         li
           .timelineUnit
-            h4 #{open_source['title']}
-              span.timelineDate= open_source['timeline']
-            h5 #{open_source['language']}
-            p !{open_source['description']}
+            h4 #{portfolio['title']}
+              span.timelineDate= portfolio['timeline']
+            h5 #{portfolio['language']}
+            p !{portfolio['description']}
 
       div.clear
 
