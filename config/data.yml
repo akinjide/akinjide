@@ -6,17 +6,14 @@ navMap:
 
 social:
   links:
-    - 'https://www.akinjide.me'
     - 'https://github.com/akinjide'
     - 'https://www.linkedin.com/in/akinjide'
 
   icons:
-    - '&#x31;'
     - '&#x33;'
     - '&#x60;'
 
   titles:
-    - 'Blog'
     - 'Github'
     - 'LinkedIn'
 
@@ -91,6 +88,21 @@ legal:  >
 
 resume:
   employment:
+    - role: 'Programmer'
+      company: 'Andela'
+      timeline: 'May 2015 - Present'
+      description: >
+        Andela is a technology company that helps companies build high performing
+        distributed engineering teams by investing in Africa’s most talented software
+        engineers, with centres in Lagos, Kampala, Nairobi, San Francisco and New York City.
+        <br>
+        <br>
+        At Andela, we believe brilliance is evenly distributed with an acceptance
+        rate below 1%. I am exposed to working with partners like Udacity and Atlas Money,
+        without technological stack limitations.
+        <br>
+        More information about my roles at these companies can be found below.
+
     - role: 'Software Architect'
       company: 'Andela'
       timeline: 'May 2018 - Present'
@@ -102,23 +114,37 @@ resume:
       company: 'Atlas Money'
       timeline: 'Feb 2018 - Jun 2018'
       description: >
-        As a TTL, I shifted fractionally from debugging the software we are building,
-        to debugging the team by identifying and clearing roadblocks, managing technical
-        debt effectively to ensure it does not accumulate and broaden the technical
-        capabilities of the team by delegating problems of increasing complexity,
-        pair programming frequently to promote engineering practices and provide
-        technical guidance.
+        As a TTL;
+        <br>
+        <br>
+        I shifted fractionally from debugging the software we are building, to
+        debugging the team by identifying and clearing roadblocks.
+        <br>
+        <br>
+        Managing technical debt effectively to ensure it does not accumulate.
+        <br>
+        <br>
+        Broaden the technical capabilities of the team by delegating problems of
+        increasing complexity, pair programming frequently to promote engineering
+        practices and provide technical guidance.
 
     - role: 'Technical Team Lead'
       company: 'Andela'
       timeline: 'Sept 2017 - May 2018'
       description: >
-        As a TTL, I lead Andela's Partner team responsible for building and scalabling
-        software products and tools necessary for operating and scaling the business
-        effectively. Drafting and deploying new strategies to effectively build and
-        manage a high velocity and performing engineering team. Lead estimation and
-        assessment of feasibility of solutions/features to be implemented on designed
-        products. Interfacing and liaising with teammates to ensure product’s development
+        As a TTL;
+        <br>
+        <br>
+        Lead Andela's Partner team responsible for building scalable software products
+        and tools necessary for operating and scaling the business
+        effectively.
+        <br>
+        <br>
+        Drafting and deploying new strategies to effectively build and manage a
+        high velocity and performing engineering team.
+        <br>
+        <br>
+        Interfacing and liaising with teammates to ensure the product’s development
         and personal growth, and better team dynamics.
 
     - role: 'Mentor'
@@ -140,11 +166,17 @@ resume:
       company: 'Andela'
       timeline: 'Oct 2016 - Sept 2017'
       description: >
-        As a Consultant, I collaborate with software architects and engineers to
-        plan, design, develop, test, deploy and maintain software applications, while
-        proactively influencing software best practices, standards, and policies
+        As a consultant;
+        <br>
+        <br>
+        Collaborate with software architects and engineers to plan, design, develop,
+        test, deploy and maintain software applications.
+        <br>
+        <br>
+        Proactively influence software best practices, standards, and policies
         within Andela's Partner team and interfacing with stakeholders including Product Owner;
-        Project Managers, to understand user requirements and extract technical requirements.
+        Project Managers; Business Analysts, to understand user requirements and extract
+        technical requirements.
 
     - role: 'Backend Engineer'
       company: 'Atlas Money'
@@ -152,32 +184,30 @@ resume:
       description: >
         As a backend engineer, I collaborate with other engineers to build, develop,
         test and maintain scalable Microservices using (but not limited to) Node.js
-        and several technologies (e.g. PostgreSQL, MongoDB and ElasticSearch, Vue.js,
-        Angular.js, Kafka) to solve business requirements facing mobile  banking.
+        and several technologies (e.g. PostgreSQL, MongoDB, ElasticSearch, Vue.js,
+        Angular.js, and Apache Kafka) to solve business requirements facing mobile banking.
 
-    - role: 'Junior Developer'
+    - role: 'Frontend Engineer'
+      company: 'Udacity'
+      timeline: 'Jan 2016 - Mar 2016'
+      description: >
+        As a frontend engineer, I focused on implementing UI designs using Zeplin, CSS Liquid,
+        JavaScript, Angular.js, and jQuery.
+
+    - role: 'Junior Engineer'
       company: 'Andela'
       timeline: 'Dec 2015 - Oct 2016'
       description: >
-        As a Junior Developer, I constantly gain skills and experience needed to
-        thrive by working with a broad range technologies, build cool stuffs in Python,
-        Node.js -- as well as various web frameworks. I also attend meetups, give talks
-        on programming, design and related topics, and actively contribute to the open
-        source community.
-
-    - role: 'Programmer'
-      company: 'Andela'
-      timeline: 'May 2015 - Present'
-      description: >
-        Andela is a technology company that helps companies build high performing
-        distributed engineering teams by investing in Africa’s most talented software
-        developers, with centres in Lagos, Kampala, Nairobi, San Francisco and New York City.
+        As a junior engineer;
         <br>
         <br>
-        At Andela, with an acceptance rate below 1%, we believe brilliance is evenly
-        distributed. I am exposed to working with partners like Udacity and Atlas,
-        without limitations to one type of technological stack. More information about
-        my roles at these companies can be found above.
+        I constantly gain skills and experience needed to thrive by working
+        with a broad range technologies, build cool stuffs in Python, Node.js --
+        as well as various web frameworks.
+        <br>
+        <br>
+        I attend meetups, give talks on programming, design and related topics,
+        and actively contribute to the open source community.
 
     - role: 'Editor'
       company: 'FashionPolice'
@@ -191,9 +221,9 @@ resume:
       timeline: '2014 - Present'
       level: 'Life'
       description: >
-        I'm primarily self-taught. I've been designing since
-        I was roughly 18 years old, and have read through hundreds
-        of design books, tutorials and articles.
+        I'm primarily self-taught. I've been designing since I was roughly 18 years
+        old, and have read through hundreds of design books, tutorials and articles.
+        Plus I'm continually expanding my knowledge and open to learning.
 
     - where: 'Lagos City Senior College'
       timeline: '2010 - 2012'
@@ -276,12 +306,12 @@ resume:
         <a href="https://github.com/akinjide/cookiet" target="_blank">https://github.com/akinjide/cookiet</a>
 
   communityContrib:
-    - role: 'Admin'
+    - role: 'Lead'
       timeline: 'May 2016 - Present'
       group: 'Facebook Developer Circle: Lagos'
       description: >
         A forum for developers in Lagos and its surroundings who are interested
-        in building on the Facebook platform to interact and collaborate other developers
+        in building on the Facebook platform to interact and collaborate with other developers
         who share similar interests.
         <br>
         <br>
