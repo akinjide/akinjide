@@ -17,6 +17,9 @@ deploy: build
 		--exclude 'node_modules/*' \
 		--exclude '.DS_Store' \
 		--exclude '.git/*' \
+		--exclude 'sw.js' \
+		--exclude 'src/*' \
+		--exclude 'lib/*' \
 		--exclude 'Makefile' \
 		--acl public-read --delete
 	@echo -- Finished [deploy]
