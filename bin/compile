@@ -1,120 +1,171 @@
 #!/usr/bin/env node
 
 var path = require('path')
+var args = {
+  serve: false,
+  watch: false,
+  environment: (process.argv[2] || 'development')
+}
+
+detect(args)
+
+
+function detect(args) {
+  process.argv.forEach(function(argv, i) {
+    switch (argv) {
+      case '-s':
+      case '--serve':
+        args.serve = true
+        break
+
+      case '-w':
+      case '--watch':
+        args.watch = true
+        break
+    }
+  })
+}
+
+process.env.NODE_ENV = args.environment
 
 require(resolve('lib') + '/check-versions')()
 
+var fs = require('fs')
+var spawn = require('child_process').spawn
 var minifier = require('minifier')
 var ProgressBar = require('progress')
 var yaml = require('js-yaml')
 var jade = require('jade')
 var gaze = require('gaze')
-var fs = require('fs')
-var spawn = require('child_process').spawn
-var environment = process.argv[2] || 'development'
-var isDevelopment = environment == 'development'
-var files = yaml.safeLoad(read(resolve('config') + '/', 'static.yml'))
-var filesF = Object.keys(files).length
-var configurations = {}
+var bs = require('browser-sync')
 
-if (!filesF) return
+var bsConfig = require('../lib/bs-config')
+var sync = bs.create('server')
+var isDevelopment = args.environment == 'development'
+var log = console.log.bind(console)
+var loadedFiles = yaml.safeLoad(read(resolve('config') + '/', 'files.yml'))
+
+var filesPath = Object
+  .keys(loadedFiles)
+  .map(function(key, index) {
+    return [].concat(
+      loadedFiles[key]['index'],
+      loadedFiles[key]['error']
+    )
+  })
+  .join(',')
+  .split(',')
+
+
+if (!filesPath.length) {
+  log('-- missing files path or files.yml')
+  process.exit(1)
+}
+
 
 minifier.on('error', function(e) {
-  console.log('-- minifier error', e)
+  log('-- minifier error', e)
   process.exit(1)
 })
 
-function minify(isDev, fn, cb) {
-  console.log('-- using %s', environment)
 
-  var suffix = {
-    css: '.min.css',
-    js: isDev ? '.dev.js' : '.min.js'
-  }
-  var options = {
-    production: {
-      uglify: {
-        output: {
-          beautify: false,
-          bracketize: true,
-          wrap_iife: true,
-          max_line_len: 320000
-        },
-        compressor: {},
-        mangle: false
-      }
-    },
-    development: {
-      uglify: {
-        output: {
-          beautify: true,
-          bracketize: true,
-          indent_level: 2,
-          width: 100,
-          comments: true,
-          wrap_iife: true,
-          max_line_len: 320000
-        },
-        compressor: {},
-        mangle: false
+function generateConfigurations(configurations, length) {
+ return configurations.reduce(function(configs, config, i) {
+    var cache = {}
+
+    if (config.gen) {
+      var j = 0
+
+      while (j < config.gen.length) {
+        cache[config.gen[j]] = squashed(length) + config.ext
+        j++;
       }
     }
-  }
+
+    configs[config.fileext] = cache
+    return configs
+  }, {})
+}
+
+function minify(isDev, fn, cb) {
+  log('-- using %s', args.environment)
+
+  var configurations = generateConfigurations([
+    { gen: ['index', 'error'], ext: '.min.css', fileext: 'css' },
+    { gen: ['index', 'error'], ext: isDev ? '.dev.js' : '.min.js', fileext: 'javascript' }
+  ], 20)
 
   var bar = new ProgressBar('-- minifing objects:  :percent (:current/:total), :etas ETA/s [:title]', {
     complete: '█',
     incomplete: '░',
-    width: Math.floor(process.stdout.columns / 4),
-    total: filesF
+    width: Math.floor(process.stdout.columns / 2),
+    total: filesPath.length
   })
 
-  configurations['css'] = {
-    index: squashed() + suffix.css,
-    four0four: squashed() + suffix.css
-  }
+  for (var i in loadedFiles) {
+    for (var j in loadedFiles[i]) {
+      (loadedFiles[i][j]).forEach(function() {
+        bar.tick({ title: process.cwd() + '/' + filesPath[bar.curr] })
+      })
 
-  configurations['javascript'] = {
-    index: squashed() + suffix.js,
-    four0four: squashed() + suffix.js
-  }
+      munch(loadedFiles[i][j], configurations[i][j], (function (i, j) {
+        if (i == 'javascript' && (j == 'index' || j == 'error')) {
+          if (isDev) {
+            return {
+              uglify: {
+                output: {
+                  beautify: true,
+                  bracketize: true,
+                  indent_level: 2,
+                  width: 100,
+                  comments: true,
+                  wrap_iife: true,
+                  max_line_len: 320000
+                },
+                compressor: {},
+                mangle: false
+              }
+            }
+          }
 
-  for (var prop in files) {
-    bar.tick({ title: bar.curr })
-    var useConf = ''
+          if (!isDev) {
+            return {
+              uglify: {
+                output: {
+                  beautify: false,
+                  bracketize: true,
+                  wrap_iife: true,
+                  max_line_len: 320000
+                },
+                compressor: {},
+                mangle: false
+              }
+            }
+          }
+        }
 
-    switch(prop) {
-      case 'cssIndex':
-        useConf = configurations.css.index
-        break
-      case 'cssError':
-        useConf = configurations.css.four0four
-        break
-      case 'jsIndex':
-        useConf = configurations.javascript.index
-        break
-      case 'jsError':
-        useConf = configurations.javascript.four0four
-        break
+        return {}
+      } (i, j)) )
     }
-
-    munch(files[prop], useConf, (function (prop) {
-      if (['jsIndex', 'jsError'].includes(prop)) {
-        if (isDev) {
-          return options.development;
-        }
-
-        if (!isDev) {
-          return options.production;
-        }
-      }
-
-      return {};
-    }(prop)))
   }
 
   if (bar.complete) {
+
+    // TODO: disable filename regeneration
+    // if 'config/sjc.yml' exists and on develop;
+    // then don't recreate
+    // else
+    // if 'config/sjc.yml' exists and on production
+    // then recreate
+    // if 'config/sjc.yml' !exists and on develop
+    // then create
+    // if 'config/sjc.yml' !exists and on production
+    // then create
+
+    // fs.stat err.code == 'ENOENT'
+
     writeYMLToDisk('config/sjc.yml', dumpObjectToYML(configurations), function() {
-      console.log('-- minification complete')
+      log('-- minification complete')
       fn(isDev, cb)
     })
   }
@@ -126,70 +177,99 @@ function compile(isEnabled, cb) {
     self: true,
     debug: isEnabled,
     compileDebug: isEnabled,
-    cache: isEnabled,
-    globals: []
+    cache: !isEnabled,
+    globals: [
+      'process'
+    ]
   }
 
-  var YMLs = [
-    'config.yml',
-    'data.yml',
-    'sjc.yml'
-  ]
-
   // Compile the source code
-  var locals = transformArrayToObject(parseYMLToJSON(YMLs))
+  var locals = transformArrayToObject(
+    parseYMLToJSON([
+      'cfn.yml',
+      'store.yml',
+      'sjc.yml'
+    ])
+  )
 
-  writeHTMLToDisk('404.html', jade.compileFile('src/404.jade', options), locals)
-  writeHTMLToDisk('index.html', jade.compileFile('src/index.jade', options), locals)
-  cb(null, 'done')
+  if (locals) {
+    ([{ filename: '404', ext: '.html' }, { filename: 'index', ext: '.html' }]).map(function(output) {
+      writeHTMLToDisk(
+        output.filename + output.ext,
+        jade.compileFile('src/' + output.filename + '.jade', options),
+        locals,
+        callback
+      )
+    })
+
+    function callback(err, result) {
+      callback.called++
+      if (callback.called == 2) cb(null, 'done')
+    }
+
+    // because everything's an {} in JavaScript!
+    callback.called = 0
+  }
 }
 
 function build(isDev, cb) {
+  console.time('-- compileTime')
   minify(isDev, compile, cb)
 }
 
 
 build(isDevelopment, function(err, done) {
-  console.log('-- %s [%s]', done, new Date())
+  log('-- %s [%s]', done, new Date())
+  console.timeEnd('-- compileTime')
 
-  if (isDevelopment && (process.argv[3] == '-w' || process.argv[3] == '--watch')) {
-    gaze([
-      resolve('static') + '/**/*',
-      resolve('src') + '/**/*'
-    ], function(err, watcher) {
-      console.log('-- watching %s directories', Object.keys(this.watched()).length)
-
-      this.add([
-        resolve('config') + '/**/(config|data|static)\.yml$'
-      ])
-
-      this.on('all', function(event, filepath) {
-        console.log(event, filepath)
-        build(isDevelopment, function(err, done) {
-          console.log('-- Regenerated site [%s]', new Date())
-        })
-      })
-    })
+  if (isDevelopment && (args.serve && args.watch)) {
+    return (
+      watcher(true),
+      server()
+    )
   }
 
-  if (process.argv[3] == '-s' || process.argv[3] == "--serve") {
-    var uri = 'http://localhost:1334'
-    var server = spawn('lib/serve')
-
-    server.stdout.on('data', function(data) { console.log('-- stdout: %s', data) })
-    server.stderr.on('data', function(data) { console.log('-- stderr: %s', data) })
-    server.on('close', function(code) {
-      console.log('-- close: %s', code)
-      process.exit(code)
-    })
-
-    console.log('-- listening %s', uri)
-  }
+  if (isDevelopment && args.watch) return watcher(false)
+  if (args.serve) return server()
 })
 
 
 ///////////////////////
 
+
+function watcher(serve) {
+  gaze([
+    resolve('static') + '/**/*',
+    resolve('config') + '/**/+(cfn|store|files).yml',
+    resolve('src') + '/**/*'
+  ], function(err, watcher) {
+    log('-- watching %s directories', Object.keys(this.watched()).length)
+
+    log(this.watched())
+
+    this.on('all', function(event, filepath) {
+      log(event, filepath)
+      build(isDevelopment, function(err, done) {
+        log('-- Regenerated site %s [%s]', done, new Date())
+
+        if (serve) {
+          sync.reload()
+        }
+
+        console.timeEnd('-- compileTime')
+      })
+    })
+  })
+}
+
+function server() {
+  sync.init(bsConfig, function(err, syncs) {
+    if (syncs.active) {
+      sync.notify('-- listening ' + bsConfig.ui.port, 2000)
+      log('-- serving *.*')
+    }
+  })
+}
 
 function munch(filetype, filename, options) {
   var payload = {
@@ -205,16 +285,17 @@ function writeYMLToDisk(filename, payload, cb) {
   fs.writeFile(filename, payload, function(err, result) {
     if (err) throw err
 
-    console.log('-- *.yml file has been saved')
-    cb()
+    log('-- *.yml file has been saved')
+    cb(null, result)
   })
 }
 
-function writeHTMLToDisk(filename, fn, locals) {
+function writeHTMLToDisk(filename, fn, locals, cb) {
   fs.writeFile(filename, fn(locals), function(err, result) {
     if (err) throw err
 
-    console.log('-- *.html file saved')
+    log('-- *.html file saved')
+    cb(null, result)
   })
 }
 
@@ -226,7 +307,7 @@ function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
-function squashed() {
+function squashed(length) {
   var iterator = 0
   var result = []
   var comb = (
@@ -236,16 +317,16 @@ function squashed() {
   ).split('')
   var squashed = ''
 
-  for (iterator; iterator < 6; iterator++) {
+  for (iterator; iterator < length; iterator++) {
     result.push(comb[Math.floor(Math.random() * comb.length - iterator) + iterator])
   }
 
   return result.join('')
 }
 
-function parseYMLToJSON(payload) {
-  console.log('-- parsing %s', payload.join(', '))
-  return payload.map(function(file) {
+function parseYMLToJSON(files) {
+  log('-- parsing %s', files.join(', '))
+  return files.map(function(file) {
     try {
       return yaml.safeLoad(read(path.join(__dirname, '..', 'config/'), file))
     } catch (e) {
@@ -255,7 +336,7 @@ function parseYMLToJSON(payload) {
 }
 
 function read(dir, file) {
-  console.log('-- reading %s', file)
+  log('-- reading %s', file)
   return fs.readFileSync(dir + file, {
     encoding: 'utf8',
     flag: 'r'
@@ -263,6 +344,8 @@ function read(dir, file) {
 }
 
 function transformArrayToObject(data) {
-  console.log('-- transforming parsed *.yml')
-  return Object.assign({}, data[0], data[1], data[2])
+  log('-- transforming parsed *.yml')
+  return data.reduce(function(col, datum, i) {
+    return Object.assign(col, datum)
+  }, {})
 }
