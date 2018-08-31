@@ -2,7 +2,6 @@
   "name": "akinjide-resume",
   "dependencies": {
     "chalk": "^2.3.1",
-    "gaze": "^1.1.2",
     "jade": "^1.11.0",
     "js-yaml": "^3.10.0",
     "minifier": "^0.8.0",
@@ -20,6 +19,7 @@
   "author": "Akinjide Bankole <r@akinjide.me>",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.24.7"
+    "browser-sync": "^2.24.7",
+    "gaze": "^1.1.2"
   }
 }
