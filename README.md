@@ -13,8 +13,8 @@
 
 Configure `config/*.yml` files to suite you need.
 
-  - `data.yml` - for generating resume, portfolio, books and contact page.
-  - `config.yml` - for generating meta tags and about, profile page.
+  - `store.yml` - for generating resume, portfolio, books and contact page.
+  - `cfn.yml` - for generating meta tags, about and profile page.
   - `sjc.yml` - for configuring scripts and styles. [auto-generated].
   - `src/includes/signature.txt` - add your fancy [text symbol](https://fsymbols.com/generators/) signature.
 
@@ -32,4 +32,4 @@ $ make deploy
 
 
 ## Note
-  - Adding books to `/static/books` directory, should match `name` in `data.yml`
+  - Adding books with `*.png` to `/static/books` directory, should match `name` in `store.yml` (i.e 'You Dont know JS (Up And Going)' matches 'you-dont-know-js-(up-and-going).png')

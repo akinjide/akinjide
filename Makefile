@@ -27,7 +27,7 @@ deploy: build
 develop:
 	@echo -- Starting [develop]
 	if [ -d build ]; then echo "-- build directory existed"; else mkdir build; fi
-	node $(COMPILE_PATH) development
+	node $(COMPILE_PATH) development -w -s
 	@echo -- Finished [develop]
 
 build: clean
