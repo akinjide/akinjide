@@ -1,4 +1,4 @@
-- var firstName = self.params.firstName.toLowerCase()
+- var firstName = self.params.name.first.toLowerCase()
 
 section#contact
   #map
@@ -17,11 +17,11 @@ section#contact
       li Key fingerprint:
       br
       li.snippet
-        strong#copy-key #{self.params.keyFingerprint}
+        strong#copy-key #{self.params.fingerPrint}
         button(data-clipboard-demo data-clipboard-target="#copy-key")
           img.clippy(width="13" src="static/images/clippy.svg" alt="Copy to clipboard")
     a.button#pgp-key.transition(
-      title="#{self.params.firstName} PGP Public Key"
+      title="#{self.params.name.first} PGP Public Key"
       href="/#{firstName}-pubkey.asc"
       download="#{firstName}-pubkey") Download PGP Key
 
@@ -31,7 +31,7 @@ section#contact
     #contact-status
     form#contactform(method="POST" action="")
       p
-        input(type="hidden" name="_subject" value="Hey #{self.params.firstName}!")
+        input(type="hidden" name="_subject" value="Hey #{self.params.name.first}!")
         input(type="text" name="_gotcha" style="display:none")
       p
         label(for="name") Your Name*

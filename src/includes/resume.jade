@@ -85,23 +85,23 @@ section#resume
         span.tooltip_content
           span
             strong Current XP:
-            |  21000
+            |  27000
             br
             strong Target XP:
-            |  27000 before JUL 1
+            |  30000
             br
             br
             strong How I calculate my XP Points.
             br
-            | 1 dot equals 3000XP, everyday I try new stuffs,
-            | 1XP is rewarded when successfully learned.
+            | 1 dot equals 3000 XP, everyday I try new stuffs,
+            | 1 XP is rewarded when successfully learned.
     ul.skills
-      each skill in [7, 0, 0, 0, 0, 0]
+      each skill in self.resume.skills.xp
         li
           .rating&attributes({ 'data-rat': skill })
   div.clear
 
   a#downloadPDF.button.transition(
-    title="#{self.params.firstName} Resume"
+    title="#{self.params.name.first} Resume"
     href="#{self.params.resumeURL}"
-    download="#{self.params.firstName.toLowerCase()}-resume") Download resume as PDF format
+    download="#{self.params.name.first.toLowerCase()}-resume") Download resume as PDF format

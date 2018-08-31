@@ -10,7 +10,7 @@ section#book
         li
           a.transition&attributes({ href: '', 'data-filter': '.' + tag.toLowerCase() })= tag
 
-  .extra-text Books I've read and recommend
+  .extra-text Books I have read and recommend
   ul#book-list
     each book in self.books.completed
       each tag, index in book.tags
@@ -18,5 +18,5 @@ section#book
 
       li(class=classes)
         a(href="#{book.url}" rel="book" target="_blank").folio
-          img(src="static/book/" + book.name.toLowerCase().split(' ').join('-') + ".png" alt="#{book.name} Book")
+          img(src="static/books/" + book.name.toLowerCase().split(' ').join('-') + ".png" alt="#{book.name} Book")
           h2.title !{book.name}
