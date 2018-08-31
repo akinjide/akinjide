@@ -14,7 +14,7 @@ social:
     - '&#x60;'
 
   titles:
-    - 'Github'
+    - 'GitHub'
     - 'LinkedIn'
 
 books:
@@ -27,18 +27,19 @@ books:
     - 'DevOps'
     - 'Security'
     - 'Databases'
-    - 'UI And UX'
 
   completed:
     - name: 'Mean Machine'
       url: 'https://leanpub.com/mean-machine'
       tags:
         - 1
+        - 3
 
     - name: 'Learn Python the Hard Way'
       url: 'https://www.amazon.com/Learn-Python-Hard-Way-Introduction/dp/0321884914'
       tags:
         - 1
+        - 3
 
     - name: 'Building Scalable Apps with Redis and Nodejs'
       url: 'https://www.packtpub.com/web-development/building-scalable-apps-redis-and-nodejs'
@@ -56,6 +57,7 @@ books:
       url: 'https://ewiggin.gitbooks.io/expressjs-middleware/content/index.html'
       tags:
         - 1
+        - 3
         - 6
 
     - name: 'Node Security'
@@ -74,11 +76,19 @@ books:
       url: 'https://www.amazon.com/You-Dont-Know-JS-Going/dp/1491924462'
       tags:
         - 1
+        - 3
 
     - name: 'You Dont know JS (Scope And Closure)'
       url: 'https://www.amazon.com/You-Dont-Know-JS-Closures/dp/1449335586'
       tags:
         - 1
+        - 3
+
+    - name: 'Web API Design (Crafting Interfaces Developers Love)'
+      url: 'https://pages.apigee.com/rs/apigee/images/api-design-ebook-2012-03.pdf'
+      tags:
+        - 1
+        - 3
 
 legal:  >
   This website uses cookies to customize your experience,
@@ -98,10 +108,16 @@ resume:
         <br>
         <br>
         At Andela, we believe brilliance is evenly distributed with an acceptance
-        rate below 1%. I am exposed to working with partners like Udacity and Atlas Money,
+        rate below 1%. I am exposed to working with partners like Udacity, Atlas Money and Pluto TV,
         without technological stack limitations.
         <br>
         More information about my roles at these companies can be found below.
+
+    - role: 'Infrastructure Engineer'
+      company: 'Pluto TV'
+      timeline: 'Aug 2018 - Present'
+      description: >
+        .
 
     - role: 'Software Architect'
       company: 'Andela'
@@ -180,7 +196,7 @@ resume:
 
     - role: 'Backend Engineer'
       company: 'Atlas Money'
-      timeline: 'Mar 2016 - Jun 2018'
+      timeline: 'Mar 2016 - Feb 2018'
       description: >
         As a backend engineer, I collaborate with other engineers to build, develop,
         test and maintain scalable Microservices using (but not limited to) Node.js
@@ -306,7 +322,7 @@ resume:
         <a href="https://github.com/akinjide/cookiet" target="_blank">https://github.com/akinjide/cookiet</a>
 
   communityContrib:
-    - role: 'Lead'
+    - role: 'Co Lead'
       timeline: 'May 2016 - Present'
       group: 'Facebook Developer Circle: Lagos'
       description: >
@@ -331,7 +347,7 @@ resume:
       'VIM': 3
       '/(No)?SQL/': 5
       'TDD': 4
-      'Git / Github': 5
+      'Git / GitHub': 5
 
     design:
       'CSS': 6
@@ -352,3 +368,9 @@ resume:
       'Writing': 4
       'Public Speaking': 3
       'German': 2
+
+    xp:
+      - 7
+      - 2
+      - 0
+      - 0
