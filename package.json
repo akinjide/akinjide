@@ -18,5 +18,8 @@
     "npm": ">= 3.10.10"
   },
   "author": "Akinjide Bankole <r@akinjide.me>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.24.7"
+  }
 }
