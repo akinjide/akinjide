@@ -185,6 +185,7 @@ function compile(isEnabled, cb) {
   }
 
   // Compile the source code
+  var TOTAL_FILE_OUTPUT = 2
   var locals = transformArrayToObject(
     parseYMLToJSON([
       'cfn.yml',
@@ -194,8 +195,6 @@ function compile(isEnabled, cb) {
   )
 
   if (locals) {
-    var TOTAL_FILE_OUTPUT = 2
-
     ([{ filename: '404', ext: '.html' }, { filename: 'index', ext: '.html' }]).map(function(output) {
       writeHTMLToDisk(
         output.filename + output.ext,
