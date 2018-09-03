@@ -90,10 +90,11 @@ function generateConfigurations(configurations, length) {
 function minify(isDev, fn, cb) {
   log('-- using %s', args.environment)
 
+  var CONFIGURATIONS_FILE_LENGTH = 20
   var configurations = generateConfigurations([
     { gen: ['index', 'error'], ext: '.min.css', fileext: 'css' },
     { gen: ['index', 'error'], ext: isDev ? '.dev.js' : '.min.js', fileext: 'javascript' }
-  ], 20)
+  ], CONFIGURATIONS_FILE_LENGTH)
 
   var bar = new ProgressBar('-- minifing objects:  :percent (:current/:total), :etas ETA/s [:title]', {
     complete: '█',
@@ -193,6 +194,8 @@ function compile(isEnabled, cb) {
   )
 
   if (locals) {
+    var TOTAL_FILE_OUTPUT = 2
+
     ([{ filename: '404', ext: '.html' }, { filename: 'index', ext: '.html' }]).map(function(output) {
       writeHTMLToDisk(
         output.filename + output.ext,
@@ -204,7 +207,7 @@ function compile(isEnabled, cb) {
 
     function callback(err, result) {
       callback.called++
-      if (callback.called == 2) cb(null, 'done')
+      if (callback.called == TOTAL_FILE_OUTPUT) cb(null, 'done')
     }
 
     // because everything's an {} in JavaScript!
@@ -310,7 +313,7 @@ function resolve(dir) {
 function squashed(length) {
   var iterator = 0
   var result = []
-  var comb = (
+  var COMB = (
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqurstuwxyz' +
     '1234567890' +
     '_-'
@@ -318,7 +321,7 @@ function squashed(length) {
   var squashed = ''
 
   for (iterator; iterator < length; iterator++) {
-    result.push(comb[Math.floor(Math.random() * comb.length - iterator) + iterator])
+    result.push(COMB[Math.floor(Math.random() * COMB.length - iterator) + iterator])
   }
 
   return result.join('')
